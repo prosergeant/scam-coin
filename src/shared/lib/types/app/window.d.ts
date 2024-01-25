@@ -3,6 +3,16 @@ export declare global {
         Telegram: {
             WebApp: {
                 expand: Function
+                initDataUnsafe: {
+                    user: {
+                        id: number
+                        isBot: boolean
+                        first_name: string
+                        last_name: string
+                        username: string
+                        language_code: string
+                    }
+                }
             }
         }
     }

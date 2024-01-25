@@ -1,6 +1,12 @@
 <template>
     <div class="main">
         <h3>Coins: {{ coins }}</h3>
+        <p>id: {{ userData?.id }}</p>
+        <p>isBot: {{ userData?.isBot }}</p>
+        <p>first_name: {{ userData?.first_name }}</p>
+        <p>last_name: {{ userData?.last_name }}</p>
+        <p>username: {{ userData?.username }}</p>
+        <p>language_code: {{ userData?.language_code }}</p>
         <div style="height: 50px" />
         <div class="background-container">
             <img
@@ -25,11 +31,21 @@ onMounted(async () => {
         const tg = window.Telegram.WebApp
         tg?.expand()
         console.log('tg', tg)
+
+        userData.value = tg?.initDataUnsafe?.user
     }
     document.head.appendChild(telegramApi)
 })
 
 const clicked = ref(false)
+const userData = ref({
+    id: 0,
+    isBot: false,
+    first_name: '',
+    last_name: '',
+    username: '',
+    language_code: ''
+})
 const clickCoin = () => {
     clicked.value = true
 
@@ -57,11 +73,14 @@ const coins = ref(0)
     justify-content: center;
 
     h3 {
-        color: white;
         font-size: 30px;
         font-weight: 700;
         text-align: center;
     }
+
+		p, h3 {
+			color: white;
+		}
 }
 
 .background-container {
