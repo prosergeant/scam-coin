@@ -1,6 +1,5 @@
 <template>
     <div class="main">
-        <h3>error {{ error }}</h3>
         <h3>Coins: {{ coins }}</h3>
         <div style="height: 50px" />
         <div class="background-container">
@@ -16,17 +15,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue';
+import {delay} from '@/shared/lib';
 
-const error = ref('')
+onMounted(async () => {
+	let telegramApi = document.createElement('script')
+	telegramApi.setAttribute('src', 'https://telegram.org/js/telegram-web-app.js')
+	document.head.appendChild(telegramApi)
+
+	await delay(100)
+	const tg = window.Telegram.WebApp;
+	tg?.expand()
+	console.log('tg', tg);
+})
+
 const clicked = ref(false)
 const clickCoin = () => {
     clicked.value = true
-    try {
-        navigator.vibrate(50)
-    } catch (e: any) {
-        error.value = e
-    }
 
     setTimeout(() => {
         clicked.value = false
