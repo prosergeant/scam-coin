@@ -45,7 +45,7 @@ onMounted( () => {
 		}
 
 		user.value.id = curr_user?.id || new_user_id || 0
-		user.value.coins = coins.value = curr_user?.coins
+		user.value.coins = coins.value = curr_user?.coins || 0
     }
     document.head.appendChild(telegramApi)
 })
