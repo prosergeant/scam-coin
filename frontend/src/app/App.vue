@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { DefaultLayout } from '@/widgets/default-layout/'
+import { DefaultLayout } from '../widgets/default-layout'
 import { computed, onMounted } from 'vue'
 
 const route = useRoute()
@@ -52,5 +52,5 @@ onMounted(async () => {
 </script>
 
 <style lang="scss">
-@import 'index.scss';
+@import 'index';
 </style>

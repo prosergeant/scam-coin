@@ -6,7 +6,7 @@
         <div style="height: 50px" />
         <div class="background-container">
             <img
-                src="/coin.png"
+                src='/coin.png'
                 class="coin"
                 :class="{ clicked: clicked }"
                 alt="coin"

@@ -2,7 +2,7 @@ export const routes = [
     {
         path: '/',
         name: 'home',
-        component: () => import('@/pages/home')
+        component: () => import('../../../pages/home')
         // meta: {
         //     layout: HomeLayout
         // }
