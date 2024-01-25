@@ -5,4 +5,6 @@ COPY src/package*.json ./
 RUN npm install
 COPY src/ .
 EXPOSE 3000
-CMD [ "npm", "start"]
+
+RUN npm run migrate
+CMD [ "npm", "run", "pm2"]

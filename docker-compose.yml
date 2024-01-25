@@ -23,7 +23,6 @@ services:
   backend:
     build:
       context: ./backend
-    command: "npm run migrate && npm run pm2"
     environment:
       DB_SCHEMA: postgres
       DB_USER: postgres
