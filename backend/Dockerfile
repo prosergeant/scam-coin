@@ -6,5 +6,5 @@ RUN npm install
 COPY src/ .
 EXPOSE 3000
 
-RUN npm run migrate
+#RUN npm run migrate
 CMD [ "npm", "run", "pm2"]
