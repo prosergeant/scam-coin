@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-family:
+        Noto Sans,
+        'sans-serif';
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.gap24 {
+    gap: 24px;
+}
+
+//::-webkit-scrollbar {
+//  width: 6px;
+//  height: 6px;
+//}
+//::-webkit-scrollbar-thumb {
+//  background: $grey-200;
+//  border: 1px solid $grey-200;
+//  border-radius: 10px;
+//}
+//::-webkit-scrollbar-thumb:hover {
+//  background: $grey-300;
+//}
+
+input,
+textarea {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.d-column {
+    display: flex;
+    flex-direction: column;
+}
+.flex {
+    display: flex;
+}
+.f-column {
+    flex-direction: column;
+}
+.a-center {
+    align-items: center;
+}
+.a-start {
+    align-items: flex-start;
+}
+.a-end {
+    align-items: flex-end;
+}
+.as-end {
+    align-self: flex-end;
+}
+.s-between {
+    justify-content: space-between;
+}
+.j-center {
+    justify-content: center;
+}
+.j-end {
+    justify-content: flex-end;
+}
+.j-start {
+    justify-content: flex-start;
+}
+
+.w-100 {
+    width: 100%;
+}
+.w-50 {
+    width: 50%;
+}
+.mw-70 {
+    min-width: 70%;
+}
+.min-w-100 {
+    min-width: 100%;
+}
+.h-100 {
+    height: 100%;
+}
+.mw-100 {
+    max-width: 100%;
+}
+
+.mw-50 {
+    max-width: 50%;
+}
+.f-grow-1 {
+    flex-grow: 1;
+}
+
+.mh-100 {
+    min-height: 100%;
+}
+
+// paddings top
+.pt-4 {
+    padding-top: 4px;
+}
+.pt-12 {
+    padding-top: 12px;
+}
+.pt-16 {
+    padding-top: 16px;
+}
+.pb-16 {
+    padding-bottom: 16px;
+}
+.mt-12 {
+    margin-top: 12px;
+}
+.mt-16 {
+    margin-top: 16px;
+}
+.mb-12 {
+    margin-bottom: 12px;
+}
+.mb-16 {
+    margin-bottom: 16px;
+}
+// paddings right
+.pr-16 {
+    padding-right: 16px;
+}
+// paddings bottom
+.pb-8 {
+    padding-bottom: 8px;
+}
+// paddings left
+.pl-12 {
+    padding-left: 12px;
+}
+.pl-16 {
+    padding-left: 16px;
+}
+.pl-32 {
+    padding-left: 32px;
+}
+// padding y
+.py-12 {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.py-16 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+// padding x
+.px-12 {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.px-16 {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+// padding all
+.p-12 {
+    padding: 12px;
+}
+.p-16 {
+    padding: 16px;
+}
+
+// gap
+.g-2 {
+    gap: 2px;
+}
+.g-4 {
+    gap: 4px;
+}
+.g-6 {
+    gap: 6px;
+}
+.g-8 {
+    gap: 8px;
+}
+.g-10 {
+    gap: 10px;
+}
+.g-12 {
+    gap: 12px;
+}
+.g-16 {
+    gap: 16px;
+}
+.g-20 {
+    gap: 20px;
+}
+.g-25 {
+    gap: 25px;
+}
+.g-32 {
+    gap: 32px;
+}
+
+// border
+.b-200 {
+    border: 1px solid #a6a6a6;
+    border-radius: 4px;
+}
+
+.br-6 {
+    border-radius: 6px 6px 0 0;
+}
+
+.br-0 {
+    border-radius: 0 0 6px 6px;
+}
+
+.payed-block {
+    transition: 0.3s all ease;
+    // width: 0;
+    // min-width: 0;
+    overflow: hidden;
+}
+.payed-block-first-block {
+    height: 78px;
+    &::v-deep(.box__body) {
+        border-bottom: none;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+.custom-tabs {
+    margin-top: -6px;
+
+    .tabs__body {
+        padding-right: 0 !important;
+    }
+
+    &.fix-width {
+        width: calc(100% - 211px - 12px) !important;
+    }
+}
+
+.payed-block-second-block {
+    // min-height: 200px;
+    height: 100%;
+}
+
+.o-auto {
+    overflow: auto;
+}
+
+.hr {
+    width: 100%;
+    height: 1px;
+    background: #a6a6a6;
+}
+
+.c-pointer {
+    cursor: pointer;
+}
+
+.u-noselect {
+    user-select: none;
+}
+
+.hr-vertical {
+    width: 1px;
+    height: 35px;
+    background-color: #a6a6a6;
+}
+
+.hover {
+    opacity: 1;
+    transition: 0.2s;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+        opacity: 0.6;
+    }
+}
+
+.blue-text {
+    color: #4747ff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.1s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
+.b-bottom {
+    border-bottom: 1px solid #000;
+}
+
+.f-weight-600 {
+    font-weight: 600;
+}
+
+.f-weight-500 {
+    font-weight: 500;
+}
