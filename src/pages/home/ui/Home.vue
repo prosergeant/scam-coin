@@ -1,6 +1,5 @@
 <template>
     <div class="main">
-<!--			<Alert message="Hello!" />-->
         <h3>Coins: {{ coins }}</h3>
         <div style="height: 50px" />
         <div class="background-container">
@@ -17,7 +16,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-// import { Alert } from 'vue-tg'
 
 const clicked = ref(false)
 const clickCoin = () => {
