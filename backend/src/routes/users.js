@@ -40,7 +40,7 @@ router.post("/", function(req, res) {
     db.Person.create({
         username: req.body.username,
         userid: req.body.userid,
-        date_created: new Date()
+        coins: req.body.coins
     })
       .then( person => {
           res.status(200).send(JSON.stringify(person));
