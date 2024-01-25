@@ -15,18 +15,18 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import {delay} from '@/shared/lib';
+import { onMounted, ref } from 'vue'
 
 onMounted(async () => {
-	let telegramApi = document.createElement('script')
-	telegramApi.setAttribute('src', 'https://telegram.org/js/telegram-web-app.js')
-	document.head.appendChild(telegramApi)
-
-	await delay(100)
-	const tg = window.Telegram.WebApp;
-	tg?.expand()
-	console.log('tg', tg);
+    const telegramApi = document.createElement('script')
+    telegramApi.setAttribute('src', 'https://telegram.org/js/telegram-web-app.js')
+    telegramApi.defer = true
+    telegramApi.onload = () => {
+        const tg = window.Telegram.WebApp
+        tg?.expand()
+        console.log('tg', tg)
+    }
+    document.head.appendChild(telegramApi)
 })
 
 const clicked = ref(false)
