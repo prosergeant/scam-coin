@@ -1,12 +1,12 @@
 <template>
     <div class="main">
         <h3>Coins: {{ coins }}</h3>
-        <p>userid: {{ userData?.id }}</p>
-        <p>username: {{ userData?.username }}</p>
+<!--        <p>userid: {{ tg_userData?.id }}</p>-->
+<!--        <p>username: {{ tg_userData?.username }}</p>-->
         <div style="height: 50px" />
         <div class="background-container">
             <img
-                src='/coin.png'
+                src="/coin.png"
                 class="coin"
                 :class="{ clicked: clicked }"
                 alt="coin"
@@ -18,28 +18,52 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { http } from '@/shared/api'
 
-onMounted(async () => {
+onMounted( () => {
     const telegramApi = document.createElement('script')
     telegramApi.setAttribute('src', 'https://telegram.org/js/telegram-web-app.js')
     telegramApi.defer = true
-    telegramApi.onload = () => {
+    telegramApi.onload = async () => {
         const tg = window.Telegram.WebApp
         tg?.expand()
-        console.log('tg', tg)
 
-        userData.value = tg?.initDataUnsafe?.user
+        tg_userData.value = tg?.initDataUnsafe?.user
+
+		const user_data: typeof user.value[] = (await http.get('/users/')).data
+		const curr_user = user_data.find(el => el.username === tg_userData.value.username)
+		let new_user_id = 0
+		console.log(curr_user);
+		if(!curr_user) {
+			const res_new_user: typeof user.value = (await http.post('/users/', {
+				username: tg_userData.value.username,
+				userid: tg_userData.value.id,
+				coins: 0
+			})).data
+
+			new_user_id = res_new_user?.id
+		}
+
+		user.value.id = curr_user?.id || new_user_id || 0
+		user.value.coins = coins.value = curr_user?.coins
     }
     document.head.appendChild(telegramApi)
 })
 
+const coins = ref(0)
+const user = ref({
+    username: '',
+    userid: '',
+    coins: 0,
+	id: 0
+})
 const clicked = ref(false)
-const userData = ref({
+const tg_userData = ref({
     id: 0,
     isBot: false,
     first_name: '',
     last_name: '',
-    username: '',
+    username: 'test_user',
     language_code: ''
 })
 const clickCoin = () => {
@@ -51,7 +75,17 @@ const clickCoin = () => {
     }, 100)
 }
 
-const coins = ref(0)
+setInterval(() => {
+	if(coins.value !== user.value.coins) {
+		http.patch(`/users/${user.value.id}/`, {
+			coins: coins.value
+		})
+			.then(() => {
+				user.value.coins = coins.value
+			})
+	}
+}, 5000)
+
 </script>
 
 <style scoped lang="scss">
