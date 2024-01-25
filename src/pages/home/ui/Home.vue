@@ -1,5 +1,6 @@
 <template>
     <div class="main">
+        <h3>error {{ error }}</h3>
         <h3>Coins: {{ coins }}</h3>
         <div style="height: 50px" />
         <div class="background-container">
@@ -17,10 +18,16 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const error = ref('')
 const clicked = ref(false)
 const clickCoin = () => {
     clicked.value = true
-    navigator.vibrate(50)
+    try {
+        navigator.vibrate(50)
+    } catch (e: any) {
+        error.value = e
+    }
+
     setTimeout(() => {
         clicked.value = false
         coins.value++
