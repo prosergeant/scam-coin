@@ -1,24 +1,30 @@
 <template>
     <div class="main">
-        <div class="space" />
+<!--			<Alert message="Hello!" />-->
         <h3>Coins: {{ coins }}</h3>
-        <img
-            src="/coin.png"
-            alt=""
-            @click="clickCoin"
-            :class="{ clicked: rotation }"
-        />
+        <div style="height: 50px" />
+        <div class="background-container">
+            <img
+                src="/coin.png"
+                class="coin"
+                :class="{ clicked: clicked }"
+                alt="coin"
+                @click="clickCoin"
+            />
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+// import { Alert } from 'vue-tg'
 
-const rotation = ref(false)
+const clicked = ref(false)
 const clickCoin = () => {
-    rotation.value = true
+    clicked.value = true
+    navigator.vibrate(50)
     setTimeout(() => {
-        rotation.value = false
+        clicked.value = false
         coins.value++
     }, 100)
 }
@@ -27,40 +33,52 @@ const coins = ref(0)
 </script>
 
 <style scoped lang="scss">
-h3 {
-    font-size: 30px;
-    font-weight: 700;
-    color: white;
-}
-
 .main {
+    user-select: none;
+    background-color: black;
+
     width: 100%;
+    max-width: 640px;
     height: 100dvh;
+
     display: flex;
     flex-direction: column;
-    //justify-content: center;
     align-items: center;
+    justify-content: center;
 
-    background: currentColor url('/background.png') no-repeat top;
-    background-size: contain;
-}
-
-img {
-    width: 240px;
-    height: 240px;
-    position: absolute;
-    left: 43.2%;
-    top: 42.2%;
-    transition: all ease 200ms;
-    filter: drop-shadow(2px 4px 6px black);
-    border-radius: 50%;
-
-    &.clicked {
-        transform: rotate3d(1, 1, 0, 30deg);
+    h3 {
+        color: white;
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
     }
 }
 
-.space {
-    height: 15dvh;
+.background-container {
+    position: relative;
+    width: 100%; /* Ширина 100% от родительского контейнера (viewport) */
+    height: 0;
+    padding-bottom: 100%; /* Высота равна ширине, чтобы создать квадратный контейнер */
+    background-image: url('/background.png'); /* Укажите путь к вашему изображению */
+    background-repeat: no-repeat;
+    background-position: top;
+    background-position-y: center;
+    background-color: currentColor;
+    background-size: cover;
+}
+
+.coin {
+    position: absolute;
+    top: 52.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24%; /* Ширина монеты относительно родительского контейнера */
+    border-radius: 50%; /* Для создания круглой формы */
+    transition: ease all 100ms;
+    filter: drop-shadow(2px 4px 6px black);
+
+    &.clicked {
+        transform: translate(-50%, -50%) scale(1.2);
+    }
 }
 </style>
