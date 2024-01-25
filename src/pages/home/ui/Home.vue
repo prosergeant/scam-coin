@@ -78,9 +78,10 @@ const coins = ref(0)
         text-align: center;
     }
 
-		p, h3 {
-			color: white;
-		}
+    p,
+    h3 {
+        color: white;
+    }
 }
 
 .background-container {
