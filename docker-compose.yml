@@ -6,3 +6,19 @@ services:
     ports:
       - '4173:4173'
     restart: unless-stopped
+
+  pgdb:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    container_name: pgdb
+    volumes:
+      - pgdbdata:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    restart: "always"
+
+volumes:
+  pgdbdata: null
