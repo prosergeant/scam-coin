@@ -28,7 +28,7 @@ services:
       DB_SCHEMA: postgres
       DB_USER: postgres
       DB_PASSWORD: postgres
-      DB_HOST: postgres
+      DB_HOST: pgdb
     depends_on:
       - pgdb
     ports:
