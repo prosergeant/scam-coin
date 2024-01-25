@@ -63,8 +63,9 @@ router.patch("/:id", function(req, res) {
     //     return
     // }
 
-    db.Person.findByPk(req.params.id).patch(data)
+    db.Person.findByPk(req.params.id)
         .then(person => {
+            person.update(data)
             res.status(200).send(JSON.stringify(person));
         })
         .catch(err => {
