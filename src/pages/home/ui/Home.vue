@@ -1,12 +1,8 @@
 <template>
     <div class="main">
         <h3>Coins: {{ coins }}</h3>
-        <p>id: {{ userData?.id }}</p>
-        <p>isBot: {{ userData?.isBot }}</p>
-        <p>first_name: {{ userData?.first_name }}</p>
-        <p>last_name: {{ userData?.last_name }}</p>
+        <p>userid: {{ userData?.id }}</p>
         <p>username: {{ userData?.username }}</p>
-        <p>language_code: {{ userData?.language_code }}</p>
         <div style="height: 50px" />
         <div class="background-container">
             <img

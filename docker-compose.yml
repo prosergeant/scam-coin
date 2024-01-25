@@ -20,5 +20,19 @@ services:
       - "5432:5432"
     restart: "always"
 
+  backend:
+    build:
+      context: ./backend
+    command: "npm run migrate && npm run pm2"
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres
+    depends_on:
+      - pgdb
+    ports:
+      - '3000:3000'
+
 volumes:
   pgdbdata: null
