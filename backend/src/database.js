@@ -17,7 +17,7 @@ const xama4ok = sequelize.define('xama4ok', {
         allowNull: true
     },
     coins: {
-        type: Sequelize.NUMBER,
+        type: Sequelize.INTEGER,
         allowNull: true
     },
     userid: {
