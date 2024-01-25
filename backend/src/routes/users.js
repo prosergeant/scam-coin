@@ -50,6 +50,28 @@ router.post("/", function(req, res) {
       });
 });
 
+router.patch("/:id", function(req, res) {
+    const data = {}
+    const keys = ['username', 'userid', 'coins']
+    for(const k of keys)
+        if(req.body[k])
+            data[k] = req.body[k]
+
+    // const person = db.Person.findByPk(req.params.id)
+    // if(!person) {
+    //     res.status(500).send('user not found')
+    //     return
+    // }
+
+    db.Person.findByPk(req.params.id).patch(data)
+        .then(person => {
+            res.status(200).send(JSON.stringify(person));
+        })
+        .catch(err => {
+            res.status(500).send(JSON.stringify(err));
+        })
+});
+
 router.delete("/:id", function(req, res) {
     db.Person.destroy({
         where: {
