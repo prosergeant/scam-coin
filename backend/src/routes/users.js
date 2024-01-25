@@ -57,12 +57,6 @@ router.patch("/:id", function(req, res) {
         if(req.body[k])
             data[k] = req.body[k]
 
-    // const person = db.Person.findByPk(req.params.id)
-    // if(!person) {
-    //     res.status(500).send('user not found')
-    //     return
-    // }
-
     db.Person.findByPk(req.params.id)
         .then(person => {
             person.update(data)
