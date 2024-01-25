@@ -24,8 +24,8 @@ router.get("/:id", function(req, res) {
 
 router.put("/", function(req, res) {
     db.Person.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        username: req.body.username,
+        userid: req.body.userid,
         id: req.body.id
     })
         .then( person => {
@@ -34,6 +34,20 @@ router.put("/", function(req, res) {
         .catch( err => {
             res.status(500).send(JSON.stringify(err));
         });
+});
+
+router.post("/", function(req, res) {
+    db.Person.create({
+        username: req.body.username,
+        userid: req.body.userid,
+        date_created: new Date()
+    })
+      .then( person => {
+          res.status(200).send(JSON.stringify(person));
+      })
+      .catch( err => {
+          res.status(500).send(JSON.stringify(err));
+      });
 });
 
 router.delete("/:id", function(req, res) {
