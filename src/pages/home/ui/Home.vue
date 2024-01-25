@@ -4,6 +4,7 @@
         <img
             src="/coin.png"
             alt=""
+						@click='coins++'
         />
     </div>
 </template>
