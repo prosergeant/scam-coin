@@ -1,13 +1,14 @@
 <template>
     <div class="user-card">
-        <p>{{ username }}</p>
+        <p>{{ first_name }}</p>
         <p>{{ coins }}</p>
     </div>
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
-    username: string
+    username?: string
+	first_name: string
     coins: number
 }>()
 </script>
