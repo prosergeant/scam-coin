@@ -4,11 +4,13 @@
             :text="text"
             left
         />
+        <Menu />
     </div>
 </template>
 
 <script setup lang="ts">
 import { InfoBtn } from '@/features'
+import { Menu } from '@/features'
 import { storeToRefs } from 'pinia'
 import { useUser } from '@/entities/user/model'
 import { computed } from 'vue'
@@ -23,6 +25,8 @@ const text = computed(() => `crit chance: ${user.value.crit_chance / 10}%\n` + `
         color: white;
     }
 
-    padding: 10px 0 0 20px;
+    padding: 10px 20px 0 20px;
+    display: flex;
+    justify-content: space-between;
 }
 </style>

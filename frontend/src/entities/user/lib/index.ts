@@ -2,7 +2,7 @@ import type { ITGUser, IUser } from '../model/types'
 import type { Ref } from 'vue'
 import { createUser, fetchUsers } from '../api'
 import { useUser } from '../model'
-import { useCoin } from '../../coin/model';
+import { useCoin } from '../../coin/model'
 
 export const updateOrCreateUser = async (tg_userData: Ref<ITGUser>) => {
     const store = useUser()
