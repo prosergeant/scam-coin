@@ -15,6 +15,8 @@ router.get("/", function(req, res) {
         }
     }
 
+    console.log(params);
+
     db.Person.findAll(params)
         .then( persons => {
             res.status(200).send(JSON.stringify(persons));
