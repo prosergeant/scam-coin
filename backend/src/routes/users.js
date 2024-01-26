@@ -4,8 +4,11 @@ const db = require('../database');
 
 router.get("/", function(req, res) {
     db.Person.findAll({
-        limit: req.query.limit || undefined,
-        order: [['coins', 'DESC']]
+        limit: req.query.limit,
+        order: [['coins', 'DESC']],
+        where: {
+            username: req.query.limit
+        }
     })
         .then( persons => {
             res.status(200).send(JSON.stringify(persons));
