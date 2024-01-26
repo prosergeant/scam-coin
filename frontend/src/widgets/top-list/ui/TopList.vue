@@ -1,7 +1,7 @@
 <template>
     <div class="top-list-wrapper">
         <div class="top-list">
-			<p style='text-align: center'>Top 100:</p>
+            <p style="text-align: center">Top 100:</p>
             <div style="padding: 10px">
                 <UserCard
                     v-for="user in users"
@@ -29,14 +29,14 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 p {
-	color: white;
+    color: white;
 }
 .top-list-wrapper {
     width: 100%;
     padding: 10px;
 
     .top-list {
-		padding-top: 4px;
+        padding-top: 4px;
         border: 1px solid white;
         border-radius: 4px;
 
