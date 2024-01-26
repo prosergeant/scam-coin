@@ -11,11 +11,9 @@ router.get("/", function(req, res) {
 
     if(req.query.username) {
         params.where = {
-            username: req.body.username
+            username: req.query.username
         }
     }
-
-    console.log(params);
 
     db.Person.findAll(params)
         .then( persons => {
