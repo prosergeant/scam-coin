@@ -22,20 +22,6 @@ router.get("/:id", function(req, res) {
         });
 });
 
-router.put("/", function(req, res) {
-    db.Person.create({
-        username: req.body.username,
-        userid: req.body.userid,
-        id: req.body.id
-    })
-        .then( person => {
-            res.status(200).send(JSON.stringify(person));
-        })
-        .catch( err => {
-            res.status(500).send(JSON.stringify(err));
-        });
-});
-
 router.post("/", function(req, res) {
     db.Person.create({
         username: req.body.username,

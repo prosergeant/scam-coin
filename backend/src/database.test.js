@@ -26,6 +26,19 @@ test('get person', async () => {
     expect(person.userid).toEqual('123456');
 });
 
+test('patch person', async () => {
+    expect.assertions(1);
+    const person = await db.Person.findOne({
+        where: {
+            username: 'test',
+            userid: '123456'
+        }
+    });
+
+    person.update({username: 'test2'})
+    expect(person.username).toEqual('test2');
+});
+
 test('delete person', async () => {
     expect.assertions(1);
     await db.Person.destroy({
