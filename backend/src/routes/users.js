@@ -3,7 +3,10 @@ const router = express.Router();
 const db = require('../database');
 
 router.get("/", function(req, res) {
-    db.Person.findAll()
+    db.Person.findAll({
+        limit: req.query.limit || undefined,
+        order: [['coins', 'ASC']]
+    })
         .then( persons => {
             res.status(200).send(JSON.stringify(persons));
         })
