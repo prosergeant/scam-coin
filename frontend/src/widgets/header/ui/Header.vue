@@ -12,7 +12,7 @@ import { computed } from 'vue';
 
 const {user} = storeToRefs(useUser())
 const text = computed(() =>
-	`crit chance: ${user.value.crit_chance}\n` +
+	`crit chance: ${user.value.crit_chance/10}%\n` +
 	`crit bonus: ${user.value.crit_bonus}`
 )
 </script>

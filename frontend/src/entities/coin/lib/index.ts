@@ -9,7 +9,7 @@ export const clickCoin = () => {
 
 	setTimeout(() => {
 		coinStore.clicked = false
-		if (randomInteger(0, 100) < userStore.user.crit_chance) {
+		if (randomInteger(0, 1000) < userStore.user.crit_chance) {
 			coinStore.coins += userStore.user.crit_bonus
 		} else {
 			coinStore.coins++
