@@ -1,6 +1,6 @@
 <template>
     <div class="main">
-        <h3>Coins: {{ coins }}</h3>
+        <h3 class='coins-count' :style='`--num:${coins}`'></h3>
         <div style="height: 50px" />
         <div class="background-container">
             <img
@@ -59,6 +59,22 @@ setInterval(() => {
 </script>
 
 <style scoped lang="scss">
+@property --num {
+	syntax: "<integer>";
+	initial-value: 0;
+	inherits: false;
+}
+
+.coins-count {
+	transition: --num 200ms;
+	counter-set: num var(--num);
+	//font: 800 40px system-ui;
+
+	&::after {
+		content: counter(num);
+	}
+}
+
 .main {
     user-select: none;
     background-color: black;
