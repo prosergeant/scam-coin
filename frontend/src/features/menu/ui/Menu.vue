@@ -25,7 +25,7 @@
 import { ref } from 'vue'
 import { routes } from '@/app/providers/router/routes'
 
-const popover = ref(true)
+const popover = ref(false)
 </script>
 
 <style scoped lang="scss">

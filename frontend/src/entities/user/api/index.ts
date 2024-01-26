@@ -1,6 +1,7 @@
 import { http } from '@/shared/api'
+import { AxiosRequestConfig } from 'axios'
 
-export const fetchUsers = async () => (await http.get('/users/')).data
+export const fetchUsers = async (params: AxiosRequestConfig) => (await http.get(`/users/`, { params })).data
 export const createUser = async (username: string, userid: string) =>
     (
         await http.post('/users/', {
