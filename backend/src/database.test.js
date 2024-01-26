@@ -43,13 +43,13 @@ test('delete person', async () => {
     expect.assertions(1);
     await db.Person.destroy({
         where: {
-            username: 'test',
+            username: 'test2',
             userid: '123456'
         }
     });
     const person = await db.Person.findOne({
         where: {
-            username: 'test',
+            username: 'test2',
             userid: '123456'
         }
     });
