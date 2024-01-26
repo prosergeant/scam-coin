@@ -1,4 +1,5 @@
 export interface IUser {
+    first_name: string
     username: string
     userid: string
     coins: number

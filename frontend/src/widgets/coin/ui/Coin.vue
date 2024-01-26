@@ -31,7 +31,7 @@ onMounted(() => {
         const tg = window.Telegram.WebApp
         tg?.expand()
 
-        // tg_userData.value = tg?.initDataUnsafe?.user
+        tg_userData.value = tg?.initDataUnsafe?.user
         await updateOrCreateUser(tg_userData)
     }
     document.head.appendChild(telegramApi)

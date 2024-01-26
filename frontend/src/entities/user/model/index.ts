@@ -9,7 +9,8 @@ export const useUser = defineStore('user', () => {
         id: 0,
         coins: 0,
         userid: '',
-        username: ''
+        username: '',
+        first_name: ''
     })
 
     return {

@@ -13,7 +13,7 @@ export const updateOrCreateUser = async (tg_userData: Ref<ITGUser>) => {
     let new_user_id = 0
 
     if (!curr_user) {
-        const res_new_user: IUser = await createUser(tg_userData.value.username, tg_userData.value.id.toString())
+        const res_new_user: IUser = await createUser(tg_userData.value)
         new_user_id = res_new_user?.id
     }
 

@@ -29,6 +29,7 @@ router.post("/", function(req, res) {
     db.Person.create({
         username: req.body.username,
         userid: req.body.userid,
+        first_name: req.body.first_name,
         coins: req.body.coins
     })
       .then( person => {
