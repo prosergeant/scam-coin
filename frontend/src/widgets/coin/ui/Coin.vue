@@ -62,21 +62,6 @@ setInterval(() => {
 </script>
 
 <style scoped lang="scss">
-@property --num {
-    syntax: '<integer>';
-    initial-value: 0;
-    inherits: false;
-}
-
-.coins-count {
-    transition: --num 200ms;
-    counter-set: num var(--num);
-
-    &::after {
-        content: counter(num);
-    }
-}
-
 .main {
     user-select: none;
     background-color: black;
