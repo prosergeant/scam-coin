@@ -7,7 +7,7 @@ router.get("/", function(req, res) {
         limit: req.query.limit,
         order: [['coins', 'DESC']],
         where: {
-            username: req.query.limit
+            username: [req.query.username]
         }
     })
         .then( persons => {
