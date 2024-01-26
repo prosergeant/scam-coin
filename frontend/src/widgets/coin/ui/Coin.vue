@@ -1,9 +1,6 @@
 <template>
     <div class="main">
-        <h3
-            class="coins-count"
-            :style="`--num:${coins}`"
-        ></h3>
+        <h3 class="coins-count">Coins: {{ coins }}</h3>
         <div style="height: 50px" />
         <div class="background-container">
             <img
