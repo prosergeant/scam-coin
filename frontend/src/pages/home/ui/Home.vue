@@ -1,11 +1,11 @@
 <template>
-	<div>
-		<Coin />
-	</div>
+    <div>
+        <Coin />
+    </div>
 </template>
 
 <script setup lang="ts">
-import {Coin} from '@/widgets/coin';
+import { Coin } from '@/widgets/coin'
 </script>
 
 <style scoped lang="scss"></style>

@@ -1,5 +1,5 @@
 import type { ITGUser, IUser } from '../model/types'
-import type {Ref} from 'vue'
+import type { Ref } from 'vue'
 import { createUser, fetchUsers } from '../api'
 import { useUser } from '../model'
 
@@ -15,8 +15,8 @@ export const updateOrCreateUser = async (tg_userData: Ref<ITGUser>, coins: Ref<n
         new_user_id = res_new_user?.id
     }
 
-    console.log('updateOrCreateUser.curr_user', curr_user);
-
     store.user.id = curr_user?.id || new_user_id || 0
     store.user.coins = coins.value = curr_user?.coins || 0
+    store.user.crit_chance = curr_user?.crit_chance || 25
+    store.user.crit_bonus = curr_user?.crit_bonus || 10
 }
