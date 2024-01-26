@@ -8,26 +8,25 @@ export const clickCoin = () => {
     const userStore = useUser()
     coinStore.clicked = true
 
+    if (randomInteger(0, 1000) < userStore.user.crit_chance) {
+        coinStore.num += userStore.user.crit_bonus
+    } else {
+        coinStore.num++
+    }
+
     setTimeout(() => {
         coinStore.clicked = false
-        let temp = coinStore.coins
-        if (randomInteger(0, 1000) < userStore.user.crit_chance) {
-            temp += userStore.user.crit_bonus
-        } else {
-            temp++
-        }
-        setCount(temp)
     }, 100)
 }
 
-const setCount = (val: number) => {
+export const setCount = (val: number) => {
     const coinStore = useCoin()
     const obj = { n: coinStore.coins }
     anime({
         targets: obj,
         n: val,
         round: 1,
-        duration: 100,
+        duration: 400,
         easing: 'linear',
         update: () => {
             coinStore.coins = obj.n

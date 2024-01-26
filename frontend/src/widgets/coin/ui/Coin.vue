@@ -15,12 +15,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue';
 import { storeToRefs } from 'pinia'
 import { useUser } from '@/entities/user/model'
 import { useCoin } from '@/entities/coin/model'
 import { updateOrCreateUser } from '@/entities/user/lib'
-import { clickCoin } from '@/entities/coin/lib'
+import { clickCoin, setCount } from '@/entities/coin/lib';
 import { editUser } from '@/entities/user/api'
 
 onMounted(() => {
@@ -38,7 +38,7 @@ onMounted(() => {
 })
 
 const { user } = storeToRefs(useUser())
-const { coins, clicked } = storeToRefs(useCoin())
+const { coins, clicked, num } = storeToRefs(useCoin())
 
 const tg_userData = ref({
     id: 0,
@@ -56,6 +56,8 @@ setInterval(() => {
         })
     }
 }, 5000)
+
+watch(() => num.value, setCount)
 </script>
 
 <style scoped lang="scss">
