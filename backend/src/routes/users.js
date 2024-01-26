@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../database');
-const { Op } = require('sequelize')
+// const { Op } = require('sequelize')
 
 router.get("/", function(req, res) {
     const params = {
@@ -11,7 +11,7 @@ router.get("/", function(req, res) {
 
     if(req.query.username) {
         params.where = {
-            [Op.eq]: req.body.username
+            username: req.body.username
         }
     }
 
