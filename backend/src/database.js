@@ -27,6 +27,14 @@ const xama4ok = sequelize.define('xama4ok', {
     date_created: {
         type: Sequelize.DATE,
         allowNull: true
+    },
+    crit_chance: {
+        type: Sequelize.INTEGER,
+        allowNull: true
+    },
+    crit_bonus: {
+        type: Sequelize.INTEGER,
+        allowNull: true
     }
 });
 
