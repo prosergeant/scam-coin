@@ -103,7 +103,7 @@ setInterval(() => {
 	top: 52.5%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 24%; /* Ширина монеты относительно родительского контейнера */
+	width: 50%; /* Ширина монеты относительно родительского контейнера */
 	border-radius: 50%; /* Для создания круглой формы */
 	transition: ease all 100ms;
 	filter: drop-shadow(2px 4px 6px black);
