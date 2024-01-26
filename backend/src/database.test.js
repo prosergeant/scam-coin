@@ -1,7 +1,7 @@
 const db = require('./database');
 
 beforeAll(async () => {
-    await db.sequelize.sync({ force: true });
+    await db.sequelize.sync(/*{ force: true }*/);
 });
 
 test('create person', async () => {
