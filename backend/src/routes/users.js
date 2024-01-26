@@ -1,15 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../database');
+const { Op } = require('sequelize')
 
 router.get("/", function(req, res) {
-    db.Person.findAll({
+    const params = {
         limit: req.query.limit,
-        order: [['coins', 'DESC']],
-        where: {
-            username: [req.query.username]
+        order: [['coins', 'DESC']]
+    }
+
+    if(req.query.username) {
+        params.where = {
+            [Op.eq]: req.body.username
         }
-    })
+    }
+
+    db.Person.findAll(params)
         .then( persons => {
             res.status(200).send(JSON.stringify(persons));
         })
