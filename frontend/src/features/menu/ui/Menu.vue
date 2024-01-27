@@ -35,10 +35,11 @@ const popover = ref(false)
         color: white;
         border-radius: 4px;
         text-decoration: none;
+		background: transparent;
     }
-    a {
-        background: transparent;
-    }
+    //a {
+    //    background: transparent;
+    //}
 
     .dots {
         height: 32px;

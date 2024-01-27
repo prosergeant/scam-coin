@@ -67,7 +67,7 @@ watch(() => num.value, setCount)
 
     width: 100%;
     max-width: 640px;
-    height: 90dvh;
+    height: calc(95dvh - 100px);
 
     display: flex;
     flex-direction: column;
