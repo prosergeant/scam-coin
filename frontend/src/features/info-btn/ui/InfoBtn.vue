@@ -76,16 +76,6 @@ p {
 
 				top: -6px;
 				left: 10px;
-
-                //top: -6px;
-                //left: calc(50% - 6px);
-                //z-index: -1;
-                //content: '';
-                //width: 12px;
-                //height: 12px;
-                //color: white;
-                //background: white;
-                //transform: rotate(45deg);
             }
         }
     }

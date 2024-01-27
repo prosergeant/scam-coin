@@ -67,6 +67,7 @@ const popover = ref(false)
         display: flex;
         flex-direction: column;
         gap: 4px;
+		background: black;
 
         &::after {
 			position: absolute;
