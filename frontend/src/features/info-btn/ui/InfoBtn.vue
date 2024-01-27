@@ -7,7 +7,6 @@
             <p>i</p>
             <div
                 class="popover"
-                :class="{ left: left }"
                 v-if="popover"
             >
                 <p>{{ text }}</p>
@@ -48,7 +47,8 @@ p {
 
         .popover {
             position: absolute;
-            top: calc(100% + 12px + 2px);
+            top: calc(100% + 8px);
+			left: -6px;
             width: 200px;
             border: 1px solid white;
             border-radius: 4px;
@@ -56,33 +56,36 @@ p {
             flex-direction: column;
             gap: 0;
             background: black;
-            z-index: 1;
             padding: 0 4px;
 
             white-space: pre;
-
-            &.left {
-                left: -4px;
-                &::after {
-                    left: 8px;
-                }
-            }
 
             p {
                 font-size: 16px;
             }
 
             &::after {
-                position: absolute;
-                top: -6px;
-                left: calc(50% - 6px);
-                z-index: -1;
-                content: '';
-                width: 12px;
-                height: 12px;
-                color: white;
-                background: white;
-                transform: rotate(45deg);
+				position: absolute;
+				content: '';
+
+				width: 0;
+				height: 0;
+				border-left: 5px solid transparent;
+				border-right: 5px solid transparent;
+				border-bottom: 5px solid white;
+
+				top: -6px;
+				left: 10px;
+
+                //top: -6px;
+                //left: calc(50% - 6px);
+                //z-index: -1;
+                //content: '';
+                //width: 12px;
+                //height: 12px;
+                //color: white;
+                //background: white;
+                //transform: rotate(45deg);
             }
         }
     }

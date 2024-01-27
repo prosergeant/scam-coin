@@ -68,10 +68,8 @@ const popover = ref(false)
         flex-direction: column;
         gap: 4px;
 
-        background: black;
-        z-index: 1;
-
         &::after {
+			position: absolute;
             content: '';
 
             width: 0;
@@ -80,7 +78,6 @@ const popover = ref(false)
             border-right: 5px solid transparent;
             border-bottom: 5px solid white;
 
-            position: absolute;
             top: -6px;
             right: 12px;
         }
