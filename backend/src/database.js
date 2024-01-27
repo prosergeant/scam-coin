@@ -28,10 +28,6 @@ const xama4ok = sequelize.define('xama4ok', {
         type: Sequelize.STRING,
         allowNull: true
     },
-    date_created: {
-        type: Sequelize.DATE,
-        allowNull: true
-    },
     crit_chance: {
         type: Sequelize.INTEGER,
         allowNull: true
