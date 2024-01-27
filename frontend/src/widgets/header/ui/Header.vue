@@ -12,7 +12,7 @@
 import { InfoBtn } from '@/features'
 import { Menu } from '@/features'
 import { storeToRefs } from 'pinia'
-import { useUser } from '@/entities/user/model'
+import { useUser } from '@/entities/user'
 import { computed } from 'vue'
 
 const { user } = storeToRefs(useUser())

@@ -1,6 +1,6 @@
 import { randomInteger } from '@/shared/lib'
 import { useCoin } from '../model'
-import { useUser } from '../../user/model'
+import { useUser } from '../../user'
 import anime from 'animejs'
 
 export const clickCoin = () => {

@@ -17,9 +17,8 @@
 
 <script setup lang="ts">
 import { UserCard } from '@/entities/top-list'
-import { fetchUsers } from '@/entities/user/api'
+import { fetchUsers, type IUser } from '@/entities/user'
 import { onMounted, ref } from 'vue'
-import { IUser } from '@/entities/user/model/types.d'
 
 const users = ref<IUser[]>([])
 

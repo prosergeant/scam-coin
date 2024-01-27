@@ -17,11 +17,11 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useUser } from '@/entities/user/model'
-import { useCoin } from '@/entities/coin/model'
-import { updateOrCreateUser } from '@/entities/user/lib'
-import { clickCoin, setCount } from '@/entities/coin/lib'
-import { editUser } from '@/entities/user/api'
+import { useUser } from '@/entities/user'
+import { useCoin } from '@/entities/coin'
+import { updateOrCreateUser } from '@/entities/user'
+import { clickCoin, setCount } from '@/entities/coin'
+import { editUser } from '@/entities/user'
 
 onMounted(() => {
     const telegramApi = document.createElement('script')
