@@ -39,9 +39,10 @@ const emit = defineEmits<{
 	left: 0;
 	height: 100dvh;
 	padding: 48px;
+	backdrop-filter: blur(5px);
 
 	.modal {
-		border: 1px solid rgba(0, 183, 255, 0.6);
+		//border: 1px solid rgba(0, 183, 255, 0.6);
 		border-radius: 4px;
 		padding: 10px;
 
@@ -57,7 +58,9 @@ const emit = defineEmits<{
 				font-weight: 700;
 				user-select: none;
 
-				background: #6422EB;
+				//background: #6422EB;
+				//background: rgb(62,60,85);
+				background: linear-gradient(90deg, rgba(62,60,85,1) 0%, rgba(120,120,124,1) 100%);
 
 				.left {
 					color: white;
@@ -66,8 +69,9 @@ const emit = defineEmits<{
 
 			.body {
 				padding: 12px;
-				background: #BA87F9;
-				height: calc(100% - 40px);
+				//background: #BA87F9;
+				//background: rgb(62,60,85);
+				background: linear-gradient(90deg, rgba(62,60,85,1) 0%, rgba(120,120,124,1) 100%);				height: calc(100% - 40px);
 				color: white;
 			}
 		}
