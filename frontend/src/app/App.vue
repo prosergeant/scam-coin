@@ -44,9 +44,9 @@ onMounted(async () => {
             document.body.style.zoom = 1
         })
 
-        // document.ondblclick = function (e) {
-        //     e.preventDefault()
-        // }
+        document.ondblclick = function (e) {
+            e.preventDefault()
+        }
     }
 })
 </script>
