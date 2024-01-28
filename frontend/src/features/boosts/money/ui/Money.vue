@@ -1,6 +1,6 @@
 <template>
 	<div :class='{inactive: inactive}'>
-		<img src='/boosts/money.png' alt='money' @click='(!inactive) && (moneyModal = true)'/>
+		<img @load='setImageIsLoad("/boosts/money.png")' src='/boosts/money.png' alt='money' @click='(!inactive) && (moneyModal = true)'/>
 		<Modal :is-show='moneyModal' @close='moneyModal=false' title='Детали буста'>
 			<div class='flex f-column w-100'>
 				<div style='flex: 1 1 auto;'>
@@ -21,10 +21,15 @@
 <script setup lang='ts'>
 import {Modal} from '@/entities/modal'
 import {DefaultButton} from '@/features';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useCoin } from '@/entities/coin';
 import { useUser } from '@/entities/user';
+import { setImageIsLoad, setImageForLoad } from '@/entities/loaded-images';
+
+onMounted(() => {
+	setImageForLoad('/boosts/money.png')
+})
 
 const {num} = storeToRefs(useCoin())
 const {user} = storeToRefs(useUser())

@@ -4,6 +4,7 @@
         <div style="height: 50px" />
         <div class="background-container">
             <img
+				@load='setImageIsLoad("/coin.png")'
                 src="/coin.png"
                 class="coin"
                 :class="{ clicked: clicked }"
@@ -22,8 +23,11 @@ import { useCoin } from '@/entities/coin'
 import { updateOrCreateUser } from '@/entities/user'
 import { clickCoin, setCount } from '@/entities/coin'
 import { editUser } from '@/entities/user'
+import { setImageIsLoad, setImageForLoad } from '@/entities/loaded-images';
 
 onMounted(() => {
+	setImageForLoad('/coin.png')
+
     const telegramApi = document.createElement('script')
     telegramApi.setAttribute('src', 'https://telegram.org/js/telegram-web-app.js')
     telegramApi.defer = true

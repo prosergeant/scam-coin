@@ -71,7 +71,8 @@ const emit = defineEmits<{
 				padding: 12px;
 				//background: #BA87F9;
 				//background: rgb(62,60,85);
-				background: linear-gradient(90deg, rgba(62,60,85,1) 0%, rgba(120,120,124,1) 100%);				height: calc(100% - 40px);
+				background: linear-gradient(90deg, rgba(62,60,85,1) 0%, rgba(120,120,124,1) 100%);
+				height: calc(100% - 40px);
 				color: white;
 			}
 		}
