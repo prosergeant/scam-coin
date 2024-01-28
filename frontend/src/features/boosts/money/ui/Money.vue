@@ -67,6 +67,7 @@ img {
 	object-fit: contain;
 	border: 1px solid rgba(0, 183, 255, 0.6);
 	border-radius: 4px;
+	user-select: none;
 }
 
 .inactive {
