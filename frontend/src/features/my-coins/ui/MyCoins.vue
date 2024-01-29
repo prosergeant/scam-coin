@@ -38,7 +38,7 @@
 import { Modal } from '@/entities/modal'
 import { onMounted, ref } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useMyCoins, type TMoney, TMoneyDetails } from '@/entities/my-coins'
+import { useMyCoins, type TMoneyDetails } from '@/entities/my-coins'
 import { setImageForLoad, setImageIsLoad } from '@/entities/loaded-images'
 
 const { myCoins } = storeToRefs(useMyCoins())

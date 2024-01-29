@@ -1,8 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { TMoney } from './types'
-
-export * from './types'
+import type { TMoney } from '../types'
 
 export const useMyCoins = defineStore('coins', () => {
     const myCoins = ref<TMoney>({

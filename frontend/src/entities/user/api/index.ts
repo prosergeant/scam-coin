@@ -1,6 +1,6 @@
 import { http } from '@/shared/api'
 import { AxiosRequestConfig } from 'axios'
-import { ITGUser } from '../model/types'
+import { ITGUser } from '../types'
 
 export const fetchUsers = async (params?: AxiosRequestConfig) => (await http.get(`/users/`, { params })).data
 export const createUser = async (tg_UserData: ITGUser) =>
