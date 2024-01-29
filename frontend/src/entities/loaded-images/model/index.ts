@@ -1,20 +1,17 @@
 import { defineStore } from 'pinia'
-import { computed, ref } from 'vue';
+import { computed, ref } from 'vue'
 
 type TImage = {
-	src: string,
-	loaded: boolean
+    src: string
+    loaded: boolean
 }
 
 export const useLoadedImages = defineStore('images', () => {
+    const loadedImages = ref<TImage[]>([])
+    const allImagesLoad = computed(() => loadedImages.value.every((image) => image.loaded))
 
-	const loadedImages = ref<TImage[]>([])
-	const allImagesLoad = computed(() =>
-		loadedImages.value.every(image => image.loaded)
-	)
-
-	return {
-		loadedImages,
-		allImagesLoad
-	}
+    return {
+        loadedImages,
+        allImagesLoad
+    }
 })

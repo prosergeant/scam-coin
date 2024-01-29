@@ -35,7 +35,7 @@ const popover = ref(false)
         color: white;
         border-radius: 4px;
         text-decoration: none;
-		background: transparent;
+        background: transparent;
     }
     //a {
     //    background: transparent;
@@ -67,10 +67,10 @@ const popover = ref(false)
         display: flex;
         flex-direction: column;
         gap: 4px;
-		background: black;
+        background: black;
 
         &::after {
-			position: absolute;
+            position: absolute;
             content: '';
 
             width: 0;

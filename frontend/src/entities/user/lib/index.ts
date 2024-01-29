@@ -8,7 +8,7 @@ export const updateOrCreateUser = async (tg_userData: Ref<ITGUser>) => {
     const store = useUser()
     const coinStore = useCoin()
 
-    const curr_user: IUser = (await fetchUsers({username: tg_userData.value.username}))?.[0]
+    const curr_user: IUser = (await fetchUsers({ username: tg_userData.value.username }))?.[0]
     // const curr_user: IUser = user_data.find((el) => el.username === tg_userData.value.username)
     let new_user_id = 0
 

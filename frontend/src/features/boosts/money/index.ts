@@ -1,1 +1,1 @@
-export {default as MoneyBoost} from './ui/Money.vue'
+export { default as MoneyBoost } from './ui/Money.vue'

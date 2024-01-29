@@ -8,7 +8,7 @@
 <script setup lang="ts">
 const props = defineProps<{
     username?: string
-	first_name: string
+    first_name: string
     coins: number
 }>()
 </script>

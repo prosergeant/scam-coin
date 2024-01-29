@@ -7,7 +7,7 @@
                     v-for="user in users"
                     :key="user.id"
                     :username="user.username"
-					:first_name='user.first_name'
+                    :first_name="user.first_name"
                     :coins="user.coins"
                 />
             </div>

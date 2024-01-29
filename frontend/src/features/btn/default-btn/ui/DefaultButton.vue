@@ -1,8 +1,7 @@
 <template>
-	<button>
-		<slot/>
-	</button>
+    <button>
+        <slot />
+    </button>
 </template>
 
-<style scoped lang='scss'>
-</style>
+<style scoped lang="scss"></style>

@@ -48,7 +48,7 @@ p {
         .popover {
             position: absolute;
             top: calc(100% + 8px);
-			left: -6px;
+            left: -6px;
             width: 200px;
             border: 1px solid white;
             border-radius: 4px;
@@ -65,17 +65,17 @@ p {
             }
 
             &::after {
-				position: absolute;
-				content: '';
+                position: absolute;
+                content: '';
 
-				width: 0;
-				height: 0;
-				border-left: 5px solid transparent;
-				border-right: 5px solid transparent;
-				border-bottom: 5px solid white;
+                width: 0;
+                height: 0;
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 5px solid white;
 
-				top: -6px;
-				left: 10px;
+                top: -6px;
+                left: 10px;
             }
         }
     }
