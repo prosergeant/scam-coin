@@ -5,6 +5,7 @@
             src="/boosts/money.png"
             alt="money"
             @click="!inactive && (moneyModal = true)"
+            class="img-btn"
         />
         <Modal
             :is-show="moneyModal"
@@ -82,15 +83,6 @@ const setBonus = () => {
 p > span {
     font-size: 18px;
     font-style: italic;
-}
-
-img {
-    width: 74px;
-    height: 74px;
-    object-fit: contain;
-    border: 1px solid rgba(0, 183, 255, 0.6);
-    border-radius: 4px;
-    user-select: none;
 }
 
 .inactive {

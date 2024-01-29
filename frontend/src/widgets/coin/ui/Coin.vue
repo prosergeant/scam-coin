@@ -2,7 +2,10 @@
     <div class="main">
         <h3 class="coins-count">Coins: {{ coins }}</h3>
         <div style="height: 50px" />
-        <div class="background-container" ref='backgroundRef'>
+        <div
+            class="background-container"
+            ref="backgroundRef"
+        >
             <img
                 @load="setImageIsLoad(coinImage)"
                 src="/coin.png"
@@ -27,11 +30,10 @@ import { setImageIsLoad, setImageForLoad } from '@/entities/loaded-images'
 
 onMounted(() => {
     setImageForLoad(coinImage)
-	loadBackgroundImage(backgroundImage)
-		.then(() => {
-			setImageIsLoad(backgroundImage)
-			backgroundRef.value.style.backgroundImage = `url("${backgroundImage}")`
-		})
+    loadBackgroundImage(backgroundImage).then(() => {
+        setImageIsLoad(backgroundImage)
+        backgroundRef.value.style.backgroundImage = `url("${backgroundImage}")`
+    })
 
     const telegramApi = document.createElement('script')
     telegramApi.setAttribute('src', 'https://telegram.org/js/telegram-web-app.js')
@@ -62,13 +64,13 @@ const backgroundRef = ref()
 const backgroundImage = '/background.png'
 const coinImage = '/coin.png'
 const loadBackgroundImage = (url: string) => {
-	setImageForLoad(url)
-	return new Promise((resolve, reject) => {
-		const image = new Image()
-		image.addEventListener('load', resolve)
-		image.addEventListener('error', reject)
-		image.src = url
-	})
+    setImageForLoad(url)
+    return new Promise((resolve, reject) => {
+        const image = new Image()
+        image.addEventListener('load', resolve)
+        image.addEventListener('error', reject)
+        image.src = url
+    })
 }
 
 setInterval(() => {

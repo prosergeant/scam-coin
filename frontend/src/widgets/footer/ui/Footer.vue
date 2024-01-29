@@ -1,11 +1,13 @@
 <template>
-    <div class="footer">
+    <div class="footer g-8">
         <MoneyBoost />
+        <MyCoins />
     </div>
 </template>
 
 <script setup lang="ts">
 import { MoneyBoost } from '@/features'
+import { MyCoins } from '@/features'
 </script>
 
 <style scoped lang="scss">

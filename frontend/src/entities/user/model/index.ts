@@ -2,6 +2,8 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { IUser } from './types'
 
+export * from './types'
+
 export const useUser = defineStore('user', () => {
     const user = ref<IUser>({
         crit_bonus: 10,
