@@ -2,9 +2,9 @@
     <div class="main">
         <h3 class="coins-count">Coins: {{ coins }}</h3>
         <div style="height: 50px" />
-        <div class="background-container">
+        <div class="background-container" ref='backgroundRef'>
             <img
-                @load="setImageIsLoad('/coin.png')"
+                @load="setImageIsLoad(coinImage)"
                 src="/coin.png"
                 class="coin"
                 :class="{ clicked: clicked }"
@@ -26,7 +26,12 @@ import { editUser } from '@/entities/user'
 import { setImageIsLoad, setImageForLoad } from '@/entities/loaded-images'
 
 onMounted(() => {
-    setImageForLoad('/coin.png')
+    setImageForLoad(coinImage)
+	loadBackgroundImage(backgroundImage)
+		.then(() => {
+			setImageIsLoad(backgroundImage)
+			backgroundRef.value.style.backgroundImage = `url("${backgroundImage}")`
+		})
 
     const telegramApi = document.createElement('script')
     telegramApi.setAttribute('src', 'https://telegram.org/js/telegram-web-app.js')
@@ -52,6 +57,19 @@ const tg_userData = ref({
     username: 'test_user',
     language_code: ''
 })
+
+const backgroundRef = ref()
+const backgroundImage = '/background.png'
+const coinImage = '/coin.png'
+const loadBackgroundImage = (url: string) => {
+	setImageForLoad(url)
+	return new Promise((resolve, reject) => {
+		const image = new Image()
+		image.addEventListener('load', resolve)
+		image.addEventListener('error', reject)
+		image.src = url
+	})
+}
 
 setInterval(() => {
     if (coins.value !== user.value.coins) {
@@ -95,7 +113,7 @@ watch(() => num.value, setCount)
     width: 100%; /* Ширина 100% от родительского контейнера (viewport) */
     height: 0;
     padding-bottom: 100%; /* Высота равна ширине, чтобы создать квадратный контейнер */
-    background-image: url('/background.png'); /* Укажите путь к вашему изображению */
+    //background-image: url('/background.png');
     background-repeat: no-repeat;
     background-position: top;
     background-position-y: center;

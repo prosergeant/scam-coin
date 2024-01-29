@@ -9,5 +9,7 @@ export const setImageIsLoad = (src: string) => {
 
 export const setImageForLoad = (src: string) => {
     const imageStore = useLoadedImages()
+    const image = imageStore.loadedImages.find(el => el.src === src)
+    if(image && image.loaded) return
     imageStore.loadedImages.push({ src: src, loaded: false })
 }
