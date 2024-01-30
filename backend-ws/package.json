@@ -1,0 +1,16 @@
+{
+  "name": "scam-coin-ws",
+  "version": "0.0.1",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-ws": "^5.0.2",
+    "http": "*",
+    "socket.io": "^4.7.4"
+  }
+}
