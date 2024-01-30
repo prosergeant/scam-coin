@@ -29,7 +29,11 @@ app.get('/users/:id', (req, res, next) => {
 const aWs = expressWs.getWss('/')
 const users = []
 app.ws('/ws/', (ws, req) => {
+	ws.on('error', function(e) {
+		console.log("error occured" +e);
+	});
 	ws.on('close', (reasonCode, description) => {
+		console.log('ws is closed with code: ' + reasonCode + ' reason: ' + description);
 		const index = users.findIndex(el => JSON.stringify(el.ws) === JSON.stringify(ws))
 		if(index !== -1)
 			users.splice(index, 1)
