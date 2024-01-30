@@ -2,12 +2,12 @@
     <div class="footer g-8">
         <MoneyBoost />
         <MyCoins />
+        <Fight />
     </div>
 </template>
 
 <script setup lang="ts">
-import { MoneyBoost } from '@/features'
-import { MyCoins } from '@/features'
+import { MoneyBoost, MyCoins, Fight } from '@/features'
 </script>
 
 <style scoped lang="scss">
