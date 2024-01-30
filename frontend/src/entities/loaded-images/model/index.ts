@@ -1,10 +1,6 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-
-type TImage = {
-    src: string
-    loaded: boolean
-}
+import type { TImage } from '../types'
 
 export const useLoadedImages = defineStore('images', () => {
     const loadedImages = ref<TImage[]>([])

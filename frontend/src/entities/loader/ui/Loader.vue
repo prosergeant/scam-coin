@@ -1,27 +1,29 @@
 <template>
     <teleport
         to="body"
-        v-if="!allImagesLoad"
+        v-if="condition"
     >
-        <div class="loader-wrapper">
+        <div
+            class="loader-wrapper"
+            :class="{ 'loader-wrapper-blur': blurBackground }"
+        >
             <progress
-                :max="loadedImages.length"
-                :value="curr_progress"
+                :max="maxProgress"
+                :value="currProgress"
             >
-                {{ curr_progress }}
+                {{ currProgress }}
             </progress>
         </div>
     </teleport>
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-import { useLoadedImages } from '@/entities/loaded-images'
-import { computed } from 'vue'
-
-const { allImagesLoad, loadedImages } = storeToRefs(useLoadedImages())
-
-const curr_progress = computed(() => loadedImages.value.filter((el) => el.loaded).length)
+const props = defineProps<{
+    condition: boolean
+    currProgress: number
+    maxProgress: number
+    blurBackground?: boolean
+}>()
 </script>
 
 <style scoped lang="scss">
@@ -40,6 +42,11 @@ const curr_progress = computed(() => loadedImages.value.filter((el) => el.loaded
     font-size: 24px;
     font-weight: 600;
     font-style: italic;
+
+    &-blur {
+        background: none;
+        backdrop-filter: blur(5px);
+    }
 }
 
 progress[value] {

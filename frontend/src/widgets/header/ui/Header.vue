@@ -9,8 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { InfoBtn } from '@/features'
-import { Menu } from '@/features'
+import { InfoBtn, Menu } from '@/features'
 import { storeToRefs } from 'pinia'
 import { useUser } from '@/entities/user'
 import { computed } from 'vue'

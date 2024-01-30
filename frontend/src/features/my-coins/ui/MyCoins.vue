@@ -59,10 +59,6 @@ const selectCoin = (key: string) => {
 </script>
 
 <style scoped lang="scss">
-.invert {
-    filter: brightness(0) invert(1);
-}
-
 span {
     width: 40px;
     height: 20px;
