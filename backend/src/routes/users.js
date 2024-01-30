@@ -51,7 +51,7 @@ router.post("/", function(req, res) {
 
 router.patch("/:id", function(req, res) {
     const data = {}
-    const keys = ['username', 'userid', 'coins']
+    const keys = ['username', 'userid', 'coins', 'first_name']
     for(const k of keys)
         if(req.body[k])
             data[k] = req.body[k]
