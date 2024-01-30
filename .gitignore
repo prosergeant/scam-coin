@@ -10756,3 +10756,6 @@
 /.idea/modules.xml
 /.idea/scam-coin.iml
 /.idea/vcs.xml
+/backend-ws/node_modules/
+/backend/src/node_modules/
+/.idea/jsLibraryMappings.xml
