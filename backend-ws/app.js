@@ -14,7 +14,7 @@ app.get('/online-users/', (req, res, next) => {
 
 app.get('/users/:id', (req, res, next) => {
 	const user = users.find(el => el.id === parseInt(req.params.id))
-	res.send(JSON.stringify(user.id || '{}'))
+	res.send(JSON.stringify(user?.id || '{}'))
 })
 
 const aWs = expressWs.getWss('/')
