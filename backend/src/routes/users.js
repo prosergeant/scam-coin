@@ -1,7 +1,39 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../database');
-// const { Op } = require('sequelize')
+const { Op } = require('sequelize')
+const { httpsGetData, parseJson } = require('../utilites')
+
+router.get('/get-user-for-fight/', async (req, res, next) => {
+    try {
+        const user_id = parseInt(req.query.id)
+
+        const params = { where: {} }
+
+        if(!isNaN(user_id))
+            params.where.id = { [Op.ne]: user_id }
+
+        // get random user
+        const all_users = JSON.parse(JSON.stringify(await db.Person.findAll(params))) //httpsGetData('/users/')
+        const random_user = all_users[Math.floor(Math.random() * all_users.length)]
+        console.log('random_user', random_user.id);
+
+        // check user online or offline
+        // double parse for very empty objects
+        const wsUser = parseJson(await httpsGetData(`/users/${random_user.id}`))
+        const isOnline = typeof wsUser === 'object' && !!Object.keys(wsUser).length
+        console.log('isOnline', isOnline);
+
+
+        res.status(200).send(JSON.stringify({
+            id: random_user.id,
+            isOnline
+        }))
+    } catch (e) {
+        console.log(e);
+        res.status(500).send(JSON.stringify(e))
+    }
+})
 
 router.get("/", function(req, res) {
     const params = {

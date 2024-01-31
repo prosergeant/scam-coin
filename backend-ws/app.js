@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const expressWs = require('express-ws')(app);
 const cors = require('cors')
-const { parseJson, httpsGetData } = require('./utils')
+const { parseJson } = require('./utils')
 
 
 app.use(express.json())
@@ -12,30 +12,9 @@ app.get('/online-users/', (req, res, next) => {
 	res.send(JSON.stringify(users.filter(el => el.id && el.id !== parseInt(req.query.id)).map(el => el.id)))
 })
 
-app.get('/get-user-for-fight/', async (req, res, next) => {
-	const user_id = parseInt(req.query.id)
-
-	// get random user
-	const all_users = await httpsGetData('/users/')
-	const user_index = all_users.findIndex(el => el.id === user_id)
-	if(user_index !== -1)
-		all_users.splice(user_index, 1)
-
-	const ids = all_users.map(el => el.id)
-	const random_user_id = ids[Math.floor(Math.random() * ids.length)]
-
-	// check user online or offline
-	const isOnline = !!users.find(el => el.id === random_user_id)
-
-	res.send(JSON.stringify({
-		id: random_user_id,
-		isOnline
-	}))
-})
-
 app.get('/users/:id', (req, res, next) => {
 	const user = users.find(el => el.id === parseInt(req.params.id))
-	res.send(JSON.stringify(user || '{}'))
+	res.send(JSON.stringify(user.id || '{}'))
 })
 
 const aWs = expressWs.getWss('/')
@@ -79,6 +58,9 @@ app.ws('/ws/', (ws, req) => {
 			case 'chat-message':
 				for(const client of aWs.clients)
 					client.send(`${json.payload.username}: ${json.payload.message}`)
+				break
+			case 'ping':
+				ws.send('pong')
 				break
 			default:
 				ws.send((new Error("wrong pupas")).message)
