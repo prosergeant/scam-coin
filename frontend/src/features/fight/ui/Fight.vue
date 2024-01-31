@@ -19,7 +19,7 @@
 import { setImageIsLoad, setImageForLoad } from '@/entities/loaded-images'
 import { Loader } from '@/entities/loader'
 import { onMounted, ref } from 'vue'
-import { getOnlineUsers } from '@/entities/fight'
+import { getUsersForFight } from '@/entities/fight'
 import { storeToRefs } from 'pinia'
 import { useUser } from '@/entities/user'
 
@@ -37,7 +37,7 @@ const currProgress = ref(0)
 const startLoad = async () => {
     try {
         isLoading.value = true
-        await getOnlineUsers(user.value.id, currProgress)
+        await getUsersForFight(user.value.id, currProgress)
         currProgress.value = 0
     } finally {
         isLoading.value = false
