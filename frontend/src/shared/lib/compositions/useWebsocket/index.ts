@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { IUser } from '@/entities/user';
+import { IUser } from '@/entities/user'
 
 export const useWebsocket = defineStore('websocket', () => {
     const webSocket = ref<null | WebSocket>(null)
@@ -27,8 +27,7 @@ export const useWebsocket = defineStore('websocket', () => {
     }
 
     const sendPing = () => {
-        if(webSocket.value)
-            webSocket.value.send(JSON.stringify({ event: 'ping' }))
+        if (webSocket.value) webSocket.value.send(JSON.stringify({ event: 'ping' }))
     }
 
     return {

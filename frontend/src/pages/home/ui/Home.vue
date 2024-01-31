@@ -20,7 +20,8 @@ watch(
     () => user.value,
     (v) => {
         if (v) createWebsocket(v)
-    }, {deep: true}
+    },
+    { deep: true }
 )
 </script>
 

@@ -12,13 +12,17 @@
             class="img-btn invert p-12"
             @load="setImageIsLoad(fightImage)"
         />
-		<Modal title='' :is-show='enemyModal' @close='enemyModal = false'>
-			<div class='flex d-column j-center g-12 w-100'>
-				<p>Твой противник: {{enemy.username}}</p>
-				<DefaultButton>Attack</DefaultButton>
-				<DefaultButton @click='enemyModal = false'>Cancel</DefaultButton>
-			</div>
-		</Modal>
+        <Modal
+            title=""
+            :is-show="enemyModal"
+            @close="enemyModal = false"
+        >
+            <div class="flex d-column j-center g-12 w-100">
+                <p>Твой противник: {{ enemy.username }}</p>
+                <DefaultButton>Attack</DefaultButton>
+                <DefaultButton @click="enemyModal = false">Cancel</DefaultButton>
+            </div>
+        </Modal>
     </div>
 </template>
 
@@ -29,8 +33,8 @@ import { onMounted, ref } from 'vue'
 import { getUsersForFight } from '@/entities/fight'
 import { storeToRefs } from 'pinia'
 import { useUser } from '@/entities/user'
-import {Modal} from '@/entities/modal';
-import {DefaultButton} from '@/features';
+import { Modal } from '@/entities/modal'
+import { DefaultButton } from '@/features'
 
 const { user } = storeToRefs(useUser())
 
@@ -43,9 +47,9 @@ const fightImage = '/fight.png'
 const isLoading = ref(false)
 const currProgress = ref(0)
 const enemy = ref({
-	id: 0,
-	username: '',
-	isOnline: false
+    id: 0,
+    username: '',
+    isOnline: false
 })
 const enemyModal = ref(false)
 
@@ -54,7 +58,7 @@ const startLoad = async () => {
         isLoading.value = true
         enemy.value = await getUsersForFight(user.value.id, currProgress)
         currProgress.value = 0
-		enemyModal.value = true
+        enemyModal.value = true
     } finally {
         isLoading.value = false
     }
