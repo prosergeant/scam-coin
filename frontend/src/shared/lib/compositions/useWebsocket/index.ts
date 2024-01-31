@@ -17,7 +17,16 @@ export const useWebsocket = defineStore('websocket', () => {
                     }
                 })
             )
+
+            setInterval(() => {
+                sendPing()
+            }, 2000)
         }
+    }
+
+    const sendPing = () => {
+        if(webSocket.value)
+            webSocket.value.send(JSON.stringify({ event: 'ping' }))
     }
 
     return {
