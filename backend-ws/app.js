@@ -2,23 +2,35 @@ const express = require('express');
 const app = express();
 const expressWs = require('express-ws')(app);
 const cors = require('cors')
-const { parseJson } = require('./utils')
+const { parseJson, httpsGetData } = require('./utils')
 
-// app.use(function (req, res, next) {
-// 	console.log('middleware');
-// 	req.testing = 'testing';
-// 	return next();
-// });
-// app.get('/', function(req, res, next){
-// 	console.log('get route', req.testing);
-// 	res.end();
-// });
 
 app.use(express.json())
 app.use(cors())
 
 app.get('/online-users/', (req, res, next) => {
 	res.send(JSON.stringify(users.filter(el => el.id && el.id !== parseInt(req.query.id)).map(el => el.id)))
+})
+
+app.get('/get-user-for-fight/', async (req, res, next) => {
+	const user_id = parseInt(req.query.id)
+
+	// get random user
+	const all_users = await httpsGetData('/users/')
+	const user_index = all_users.findIndex(el => el.id === user_id)
+	if(user_index !== -1)
+		all_users.splice(user_index, 1)
+
+	const ids = all_users.map(el => el.id)
+	const random_user_id = ids[Math.floor(Math.random() * ids.length)]
+
+	// check user online or offline
+	const isOnline = !!users.find(el => el.id === random_user_id)
+
+	res.send(JSON.stringify({
+		id: random_user_id,
+		isOnline
+	}))
 })
 
 app.get('/users/:id', (req, res, next) => {
@@ -33,8 +45,8 @@ app.ws('/ws/', (ws, req) => {
 		console.log("error occured" +e);
 	});
 	ws.on('close', (reasonCode, description) => {
-		console.log('ws is closed with code: ' + reasonCode + ' reason: ' + description);
 		const index = users.findIndex(el => JSON.stringify(el.ws) === JSON.stringify(ws))
+		console.log(`ws(${users[index].id}) is closed with code: ${reasonCode} reason ${description}`);
 		if(index !== -1)
 			users.splice(index, 1)
 	})
