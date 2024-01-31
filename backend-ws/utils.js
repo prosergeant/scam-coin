@@ -12,7 +12,7 @@ const parseJson = (string) => {
 
 const httpsGetData = (url, params) => {
 	const options = {
-		host: 'backend', //'bronkz.app',
+		host: 'bronkz.app',
 		port: 443,
 		path: `/api${url}`,
 		method: 'GET',
