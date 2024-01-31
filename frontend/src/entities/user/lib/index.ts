@@ -19,6 +19,7 @@ export const updateOrCreateUser = async (tg_userData: Ref<ITGUser>) => {
 
     store.user.id = curr_user?.id || new_user_id || 0
     store.user.coins = coinStore.num = coinStore.coins = curr_user?.coins || 0
-    store.user.crit_chance = curr_user?.crit_chance || 25
-    store.user.crit_bonus = curr_user?.crit_bonus || 10
+    store.user.crit_chance = curr_user?.crit_chance || 50
+    store.user.crit_bonus = curr_user?.crit_bonus || 2
+    store.user.damage = curr_user?.damage || 100
 }

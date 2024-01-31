@@ -21,11 +21,9 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import { storeToRefs } from 'pinia'
-import { useUser } from '@/entities/user'
+import { useUser, updateOrCreateUser, editUser } from '@/entities/user'
 import { useCoin } from '@/entities/coin'
-import { updateOrCreateUser } from '@/entities/user'
 import { clickCoin, setCount } from '@/entities/coin'
-import { editUser } from '@/entities/user'
 import { setImageIsLoad, setImageForLoad } from '@/entities/loaded-images'
 
 onMounted(() => {
