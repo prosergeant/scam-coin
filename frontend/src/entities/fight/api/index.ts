@@ -12,7 +12,7 @@ export const getOnlineUsers = async (user_id: number, percentage?: Ref<number>) 
 
 export const getUsersForFight = async (user_id, percentage?: Ref<number>) =>
     (
-        await http.get(`/get-user-for-fight/?id=${user_id}`, {
+        await http.get(`/users/get-user-for-fight/?id=${user_id}`, {
             onDownloadProgress: (progressEvent) => {
                 if (typeof percentage.value === 'number') percentage.value = Math.round((progressEvent.loaded * 100) / progressEvent.total)
             }
