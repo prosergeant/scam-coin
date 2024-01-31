@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { IUser } from '@/entities/user';
 
 export const useWebsocket = defineStore('websocket', () => {
     const webSocket = ref<null | WebSocket>(null)
 
-    const createWebsocket = (user_id: number) => {
+    const createWebsocket = (user: IUser) => {
         if (webSocket.value) return
 
         webSocket.value = new WebSocket(import.meta.env.VITE_WS_URL)
@@ -13,7 +14,8 @@ export const useWebsocket = defineStore('websocket', () => {
                 JSON.stringify({
                     event: 'login',
                     payload: {
-                        id: user_id
+                        id: user.id,
+                        username: user.username
                     }
                 })
             )

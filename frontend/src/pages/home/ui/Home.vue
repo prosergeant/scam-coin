@@ -17,10 +17,10 @@ const { user } = storeToRefs(useUser())
 const { createWebsocket } = useWebsocket()
 
 watch(
-    () => user.value.id,
+    () => user.value,
     (v) => {
         if (v) createWebsocket(v)
-    }
+    }, {deep: true}
 )
 </script>
 

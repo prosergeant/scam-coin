@@ -6,6 +6,7 @@ export interface IUser {
     id: number
     crit_chance: number
     crit_bonus: number
+    damage: number
 }
 
 export interface ITGUser {
