@@ -24,6 +24,7 @@ router.get('/get-user-for-fight/', async (req, res, next) => {
         res.status(200).send(
             JSON.stringify({
                 id: random_user.id,
+                username: random_user.username,
                 isOnline
             })
         )
