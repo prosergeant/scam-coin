@@ -4,6 +4,7 @@ import { IUser } from '@/entities/user'
 
 export const useWebsocket = defineStore('websocket', () => {
     const webSocket = ref<null | WebSocket>(null)
+    const coinsToDelete = ref(0)
 
     const createWebsocket = (user: IUser) => {
         if (webSocket.value) return
@@ -24,6 +25,18 @@ export const useWebsocket = defineStore('websocket', () => {
                 sendPing()
             }, 2000)
         }
+
+        webSocket.value.addEventListener('message', (msg) => {
+            const json = JSON.parse(msg.data)
+
+            switch (json.event) {
+                case 'set-money':
+                    coinsToDelete.value = json.payload.coins
+                    break
+                default:
+                    break
+            }
+        })
     }
 
     const sendPing = () => {
@@ -32,6 +45,7 @@ export const useWebsocket = defineStore('websocket', () => {
 
     return {
         webSocket,
+        coinsToDelete,
         createWebsocket
     }
 })

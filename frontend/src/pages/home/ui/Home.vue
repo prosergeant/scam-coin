@@ -15,6 +15,7 @@ import { watch } from 'vue'
 
 const { user } = storeToRefs(useUser())
 const { createWebsocket } = useWebsocket()
+const {coinsToDelete} = storeToRefs(useWebsocket())
 
 watch(
     () => user.value,
@@ -23,6 +24,14 @@ watch(
     },
     { deep: true }
 )
+
+watch(() => coinsToDelete.value, (v) => {
+	if(v) {
+		user.value.coins -= v
+		coinsToDelete.value = 0
+	}
+})
+
 </script>
 
 <style scoped lang="scss"></style>

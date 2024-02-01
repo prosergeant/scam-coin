@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../database')
 const { Op } = require('sequelize')
-const { httpsGetData, parseJson } = require('../utilites')
+const { httpsGetData, httpsPostData, parseJson } = require('../utilites')
 
 router.get('/get-user-for-fight/', async (req, res, next) => {
     try {
@@ -47,6 +47,16 @@ router.post('/grab-money/', async (req, res, next) => {
             toUser.coins += sum
             await fromUser.save()
             await toUser.save()
+
+            const wsUser = parseJson(await httpsGetData(`/users/${fromUser.id}`))
+            const isOnline = typeof wsUser === 'object' && !!Object.keys(wsUser).length
+            if(isOnline)
+                await httpsPostData('/users/send-set-money/', {
+                    id: toUser.id,
+                    coins: sum
+                })
+
+
             res.status(200).send(JSON.stringify({status: 'ok', coins: sum}))
         } else {
             throw new Error('incorrect data')

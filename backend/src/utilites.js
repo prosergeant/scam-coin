@@ -43,4 +43,31 @@ const httpsGetData = (url, params) => {
     })
 }
 
-module.exports = { parseJson, httpsGetData }
+const httpsPostData = (url, body) => {
+    const postData = JSON.stringify(body)
+    const options = {
+        hostname: 'bronkz.app',
+        port: 443,
+        path: `/api-ws${url}`,
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Length': postData.length
+        }
+    };
+
+    const req = https.request(options, (res) => {
+        res.on('data', (d) => {
+            process.stdout.write(d)
+        })
+    })
+
+    req.on('error', (e) => {
+        console.log('httpsPostData error', e);
+    })
+
+    req.write(postData)
+    req.end()
+}
+
+module.exports = { parseJson, httpsGetData, httpsPostData }

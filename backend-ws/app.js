@@ -8,6 +8,23 @@ const { parseJson } = require('./utils')
 app.use(express.json())
 app.use(cors())
 
+app.post('/users/send-set-money/', (req, res, next) => {
+	const id = parseInt(req.body.id)
+	const coins = parseInt(req.body.coins)
+	const user = users.find(el => el.id === id)
+	if(user) {
+		user.ws.send(JSON.stringify({
+			event: 'set-money',
+			payload: {
+				coins: coins
+			}
+		}))
+	}
+
+	res.status(200).send('ok')
+})
+
+
 app.get('/online-users/', (req, res, next) => {
 	res.send(JSON.stringify(users.filter(el => el.id && el.id !== parseInt(req.query.id)).map(el => el.id)))
 })
