@@ -42,7 +42,7 @@ router.post('/grab-money/', async (req, res, next) => {
         if(from && to) {
             const fromUser = await db.Person.findOne({where: {id: from}})
             const toUser = await db.Person.findOne({where: {id: to}})
-            const sum = fromUser.coins * 5 / 100
+            const sum = Math.floor(fromUser.coins * 5 / 100)
             fromUser.coins -= sum
             toUser.coins += sum
             await fromUser.save()
