@@ -22,7 +22,7 @@ app.post('/users/send-set-money/', (req, res, next) => {
 		}))
 	}
 
-	res.status(200).send(JSON.stringify(user))
+	res.status(200).send(`user id: ${user.id}`)
 })
 
 
