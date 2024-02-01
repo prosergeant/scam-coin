@@ -13,6 +13,7 @@ app.post('/users/send-set-money/', (req, res, next) => {
 	const coins = parseInt(req.body.coins)
 	const user = users.find(el => el.id === id)
 	if(user) {
+		console.log(user);
 		user.ws.send(JSON.stringify({
 			event: 'set-money',
 			payload: {
