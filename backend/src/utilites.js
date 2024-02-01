@@ -51,8 +51,8 @@ const httpsPostData = (url, body) => {
         path: `/api-ws${url}`,
         method: 'POST',
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Content-Length': postData.length
+            'Content-Type': 'application/json',
+            'Content-Length': Buffer.byteLength(postData)
         }
     };
 
