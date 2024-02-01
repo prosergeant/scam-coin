@@ -52,9 +52,14 @@ router.post('/grab-money/', async (req, res, next) => {
             const isOnline = typeof wsUser === 'object' && !!Object.keys(wsUser).length
             if(isOnline)
                 await httpsPostData('/users/send-set-money/', {
-                    id: toUser.id,
+                    id: fromUser.id,
                     coins: sum
                 })
+
+            await httpsPostData('/users/send-set-money/', {
+                id: toUser.id,
+                coins: -sum
+            })
 
 
             res.status(200).send(JSON.stringify({status: 'ok', coins: sum}))
