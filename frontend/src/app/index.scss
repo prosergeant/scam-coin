@@ -58,6 +58,12 @@ input[type='number']::-webkit-outer-spin-button {
 .flex {
     display: flex;
 }
+.flex-1-1-auto {
+    flex: 1 1 auto;
+}
+.f-wrap {
+    flex-wrap: wrap;
+}
 .f-column {
     flex-direction: column;
 }

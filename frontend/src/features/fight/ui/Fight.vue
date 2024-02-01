@@ -19,7 +19,7 @@
         >
             <div class="flex d-column j-center g-12 w-100">
                 <p>Твой противник: {{ enemy.username }}</p>
-                <DefaultButton>Attack</DefaultButton>
+                <DefaultButton @click='router.push("/fight-room/")'>Attack</DefaultButton>
                 <DefaultButton @click="enemyModal = false">Cancel</DefaultButton>
             </div>
         </Modal>
@@ -30,13 +30,16 @@
 import { setImageIsLoad, setImageForLoad } from '@/entities/loaded-images'
 import { Loader } from '@/entities/loader'
 import { onMounted, ref } from 'vue'
-import { getUsersForFight } from '@/entities/fight'
+import { getUsersForFight, useFight } from '@/entities/fight'
 import { storeToRefs } from 'pinia'
 import { useUser } from '@/entities/user'
 import { Modal } from '@/entities/modal'
 import { DefaultButton } from '@/features'
+import { useRouter } from 'vue-router';
 
+const router = useRouter()
 const { user } = storeToRefs(useUser())
+const {enemy} = storeToRefs(useFight())
 
 onMounted(async () => {
     setImageForLoad(fightImage)
@@ -46,11 +49,6 @@ const fightImage = '/fight.png'
 
 const isLoading = ref(false)
 const currProgress = ref(0)
-const enemy = ref({
-    id: 0,
-    username: '',
-    isOnline: false
-})
 const enemyModal = ref(false)
 
 const startLoad = async () => {

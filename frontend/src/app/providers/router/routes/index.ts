@@ -1,3 +1,4 @@
 import { route as home } from './home'
 import { route as top } from './top'
-export const routes = [home, top] as const
+import {route as fightRoom} from './fight-room'
+export const routes = [home, top, fightRoom] as const

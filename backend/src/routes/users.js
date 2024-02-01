@@ -34,6 +34,30 @@ router.get('/get-user-for-fight/', async (req, res, next) => {
     }
 })
 
+router.post('/grab-money/', async (req, res, next) => {
+    try {
+        const from = parseJson(req.body.from)
+        const to = parseJson(req.body.to)
+
+        if(from && to) {
+            const fromUser = await db.Person.findOne({where: {id: from}})
+            const toUser = await db.Person.findOne({where: {id: to}})
+            const sum = fromUser.coins * 5 / 100
+            fromUser.coins -= sum
+            toUser.coins += sum
+            await fromUser.save()
+            await toUser.save()
+            res.status(200).send(JSON.stringify({status: 'ok', coins: sum}))
+        } else {
+            throw new Error('incorrect data')
+        }
+
+    } catch (e) {
+        console.log(e)
+        res.status(500).send(JSON.stringify(e))
+    }
+})
+
 router.get('/', function (req, res) {
     const params = {
         limit: req.query.limit,
