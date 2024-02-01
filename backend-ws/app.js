@@ -22,7 +22,7 @@ app.post('/users/send-set-money/', async (req, res, next) => {
 		}))
 	}
 
-	res.status(200).send(`tipa ok`)
+	res.status(200).send(`ws req body id: ${id}, coins: ${coins}`)
 })
 
 
