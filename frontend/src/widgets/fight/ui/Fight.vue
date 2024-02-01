@@ -8,7 +8,7 @@
 		<Modal title='' :is-show='isWin === true || isWin === false'>
 			<div class='d-column w-100 h-100'>
 				<div class='flex-1-1-auto'>
-					<p v-if='isWin'>Успешно украдено n монет</p>
+					<p v-if='isWin'>Успешно украдено {{grabbedMoney}} монет</p>
 					<p v-else>Неудача</p>
 
 					<div class='flex j-center a-center w-100 h-100'>
