@@ -21,7 +21,7 @@ app.post('/users/send-set-money/',  (req, res, next) => {
 		}))
 	}
 
-	res.status(200).send(`ws req body id: ${id}, coins: ${coins}, user.id :${user?.id}`)
+	res.status(200).send(`ws req body id: ${id}, coins: ${coins}, user.id :${user?.id}, users.length: ${users.length}`)
 })
 
 
