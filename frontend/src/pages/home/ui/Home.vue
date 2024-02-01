@@ -12,8 +12,10 @@ import { useWebsocket } from '@/shared/lib'
 import { useUser } from '@/entities/user'
 import { storeToRefs } from 'pinia'
 import { watch } from 'vue'
+import { useCoin } from '@/entities/coin';
 
 const { user } = storeToRefs(useUser())
+const {num} = storeToRefs(useCoin())
 const { createWebsocket } = useWebsocket()
 const {coinsToDelete} = storeToRefs(useWebsocket())
 
@@ -27,7 +29,7 @@ watch(
 
 watch(() => coinsToDelete.value, (v) => {
 	if(v) {
-		user.value.coins -= v
+		num.value -= v
 		coinsToDelete.value = 0
 	}
 })

@@ -36,6 +36,8 @@ export const useWebsocket = defineStore('websocket', () => {
 
         webSocket.value.addEventListener('message', (msg) => {
             const json = parseJson<TWSData>(msg.data)
+            if(msg.data === 'pong') return;
+            console.log(json);
 
             if((json as TJsonError)?.error) return
 

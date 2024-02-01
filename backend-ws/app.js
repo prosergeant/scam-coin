@@ -19,9 +19,11 @@ app.post('/users/send-set-money/',  (req, res, next) => {
 				coins: coins
 			}
 		}))
+		res.status(200).send('send to client')
 	}
 
-	res.status(200).send(`ws req body id: ${id}, coins: ${coins}, user.id :${user?.id}, users.length: ${users.length}, users ids: ${users.map(el => el.id)}`)
+	// res.status(200).send(`ws req body id: ${id}, coins: ${coins}, user.id :${user?.id}, users.length: ${users.length}, users ids: ${users.map(el => el.id)}`)
+	res.status(500).send('not send to client')
 })
 
 
