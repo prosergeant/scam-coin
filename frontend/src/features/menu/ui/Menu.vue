@@ -11,7 +11,7 @@
             v-if="popover"
         >
             <router-link
-                v-for="route in routes.filter(el => !el.meta?.hiddenFromMenu)"
+                v-for="route in routes.filter((el) => !el.meta?.hiddenFromMenu)"
                 :key="route.name"
                 :to="route.path"
             >

@@ -25,7 +25,7 @@ const text = computed(() => `crit chance: ${user.value.crit_chance / 10}%\n` + `
     }
 
     padding: 10px 20px 0 20px;
-	height: 35px;
+    height: 35px;
     display: flex;
     justify-content: space-between;
 }

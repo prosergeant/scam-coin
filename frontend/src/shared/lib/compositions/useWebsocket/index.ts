@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { IUser } from '@/entities/user'
-import { parseJson, type TJsonError } from '@/shared/lib';
+import { parseJson, type TJsonError } from '@/shared/lib'
 
 type TWSData = {
-    event: string,
+    event: string
     payload: {
         [key: string]: any
     }
@@ -36,10 +36,10 @@ export const useWebsocket = defineStore('websocket', () => {
 
         webSocket.value.addEventListener('message', (msg) => {
             const json = parseJson<TWSData>(msg.data)
-            if(msg.data === 'pong') return;
-            console.log(json);
+            if (msg.data === 'pong') return
+            console.log(json)
 
-            if((json as TJsonError)?.error) return
+            if ((json as TJsonError)?.error) return
 
             switch (json.event) {
                 case 'set-money':
