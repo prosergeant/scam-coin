@@ -14,9 +14,9 @@
                         style="width: 32px; height: 32px"
                     />
                 </template>
-                <template v-else-if="i > 1 && i < 3">😎</template>
-                <template v-else-if="i > 10 && i < 13">🥺</template>
-                <template v-else-if="i > 22 && i < 24">$</template>
+                <template v-else-if="i > 1 && i < 5">😎</template>
+                <template v-else-if="i > 10 && i < 15">🥺</template>
+                <template v-else-if="i > 22 && i < 28">$</template>
                 <template v-else>
                     {{ i }}
                 </template>
