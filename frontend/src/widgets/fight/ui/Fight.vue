@@ -7,20 +7,24 @@
                 v-for="i in pool"
                 @click="choseNumber(i)"
             >
-				<template v-if='i === 69'>
-					<img src='/qr_code.png' style='width: 32px; height: 32px;' />
-				</template>
-				<template v-else-if='i > 1 && i < 3'>😎</template>
-				<template v-else-if='i > 10 && i < 13'>🥺</template>
-				<template v-else-if='i > 22 && i < 24'>$</template>
-				<template v-else>
-					{{ i }}
-				</template>
+                <template v-if="i === 69">
+                    <img
+						alt=''
+                        src="/qr_code.png"
+                        style="width: 32px; height: 32px"
+                    />
+                </template>
+                <template v-else-if="i > 1 && i < 3">😎</template>
+                <template v-else-if="i > 10 && i < 13">🥺</template>
+                <template v-else-if="i > 22 && i < 24">$</template>
+                <template v-else>
+                    {{ i }}
+                </template>
             </div>
         </div>
         <Modal
             title=""
-            :is-show="isWin === true || isWin === false"
+            :is-show="isWin === true || isWin === false || preloadImages"
         >
             <div class="d-column w-100 h-100">
                 <div class="flex-1-1-auto">
@@ -29,7 +33,8 @@
 
                     <div class="flex j-center a-center w-100 h-100">
                         <img
-							@load='setImageIsLoad(i)'
+							alt=''
+                            @load="setImageIsLoad(i)"
                             class="chest-anim"
                             :class="{ active: j === currFrame }"
                             v-for="(i, j) in chestAnimUrls"
@@ -53,20 +58,24 @@ import { useRouter } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { useUser } from '@/entities/user'
 import { grabMoney, useFight } from '@/entities/fight'
-import { setImageForLoad, setImageIsLoad } from '@/entities/loaded-images';
+import { setImageForLoad, setImageIsLoad } from '@/entities/loaded-images'
 
 const router = useRouter()
 const { user } = storeToRefs(useUser())
 const { setEnemyDefault } = useFight()
 const { enemy } = storeToRefs(useFight())
 
-onMounted(() => {
+
+onMounted(async () => {
     if (!enemy.value.id) router.push('/')
     createPool()
-	for(const i of chestAnimUrls)
-		setImageForLoad(i)
+    for (const i of chestAnimUrls) setImageForLoad(i)
+	preloadImages.value = true
+	await delay(0)
+	preloadImages.value = false
 })
 
+const preloadImages = ref(false)
 const chestAnimUrls = [
     '/chest_frames/1.png',
     '/chest_frames/2.png',
