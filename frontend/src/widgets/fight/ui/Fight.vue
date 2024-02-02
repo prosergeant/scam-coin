@@ -123,8 +123,8 @@ const choseNumber = async (n: number) => {
         const res = await grabMoney(enemy.value.id, user.value.id)
         if (res?.status === 'ok') grabbedMoney.value = res.coins
     } else {
-		await grabMoney(user.value.id, enemy.value.id)
-	}
+        await grabMoney(user.value.id, enemy.value.id)
+    }
     isWin.value = temp
 }
 
