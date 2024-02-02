@@ -19,8 +19,8 @@
         >
             <div class="flex d-column j-center g-12 w-100">
                 <p>Твой противник: {{ enemy.username }}</p>
-                <DefaultButton @click="router.push('/fight-room/')">Attack</DefaultButton>
-                <DefaultButton @click="enemyModal = false">Cancel</DefaultButton>
+                <DefaultButton @click="router.push('/fight-room/')">Заскамиться</DefaultButton>
+                <DefaultButton @click="enemyModal = false">Я передумал</DefaultButton>
             </div>
         </Modal>
     </div>

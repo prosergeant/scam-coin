@@ -36,13 +36,15 @@ router.get('/get-user-for-fight/', async (req, res, next) => {
 
 router.post('/grab-money/', async (req, res, next) => {
     try {
-        const from = parseJson(req.body.from)
-        const to = parseJson(req.body.to)
+        const from = parseInt(req.body.from)
+        const to = parseInt(req.body.to)
+        let sum = parseInt(req.body.sum)
 
         if(from && to) {
             const fromUser = await db.Person.findOne({where: {id: from}})
             const toUser = await db.Person.findOne({where: {id: to}})
-            const sum = Math.floor(fromUser.coins * 5 / 100)
+            if(!sum)
+                sum = Math.floor(fromUser.coins * 5 / 100)
             fromUser.coins -= sum
             toUser.coins += sum
             await fromUser.save()

@@ -21,6 +21,21 @@
                     {{ i }}
                 </template>
             </div>
+            <div class="flex a-center w-100 s-between">
+                <p>{{ sum }}</p>
+                <div class="d-column g-8">
+                    <span
+                        class="set-money"
+                        @click="setSum('plus')"
+                        >+</span
+                    >
+                    <span
+                        class="set-money"
+                        @click="setSum('minus')"
+                        >-</span
+                    >
+                </div>
+            </div>
         </div>
         <Modal
             title=""
@@ -59,8 +74,10 @@ import { storeToRefs } from 'pinia'
 import { useUser } from '@/entities/user'
 import { grabMoney, useFight } from '@/entities/fight'
 import { setImageForLoad, setImageIsLoad } from '@/entities/loaded-images'
+import { useCoin } from '@/entities/coin'
 
 const router = useRouter()
+const { num } = storeToRefs(useCoin())
 const { user } = storeToRefs(useUser())
 const { setEnemyDefault } = useFight()
 const { enemy } = storeToRefs(useFight())
@@ -72,6 +89,9 @@ onMounted(async () => {
     preloadImages.value = true
     await delay(0)
     preloadImages.value = false
+
+    if (num.value >= 1000) sum.value = 1000
+    else sum.value = num.value
 })
 
 const preloadImages = ref(false)
@@ -85,6 +105,17 @@ const chestAnimUrls = [
 ]
 const currFrame = ref(0)
 const grabbedMoney = ref(0)
+const sum = ref(0)
+
+const setSum = (type: string) => {
+    if (type === 'plus') {
+        if (sum.value + 1000 > num.value) sum.value = num.value
+        else sum.value += 1000
+    } else {
+        if (sum.value <= 1000) sum.value = 0
+        else sum.value -= 1000
+    }
+}
 
 const startAnim = async (speed: number) => {
     for (let i = 0; i < chestAnimUrls.length - 1; i++) {
@@ -120,10 +151,10 @@ const choseNumber = async (n: number) => {
     const temp = n === closestLeft.value || n === closestRight.value
     if (temp) {
         startAnim(111)
-        const res = await grabMoney(enemy.value.id, user.value.id)
+        const res = await grabMoney(enemy.value.id, user.value.id, sum.value)
         if (res?.status === 'ok') grabbedMoney.value = res.coins
     } else {
-        await grabMoney(user.value.id, enemy.value.id)
+        await grabMoney(user.value.id, enemy.value.id, sum.value)
     }
     isWin.value = temp
 }
@@ -138,6 +169,17 @@ const endFight = async () => {
 <style scoped lang="scss">
 p {
     color: white;
+}
+
+.set-money {
+    background: gray;
+    border-radius: 6px;
+    width: 24px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
 }
 
 .wrapper {
