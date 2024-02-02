@@ -168,7 +168,8 @@ p {
 .set-money {
     background: gray;
     border-radius: 6px;
-    width: 24px;
+    width: 50px;
+	height: 50px;
     color: white;
     display: flex;
     justify-content: center;
