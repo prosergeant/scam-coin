@@ -1,39 +1,33 @@
 <template>
     <div class="wrapper d-column j-center a-center">
         <!--		<p>neededNumber: {{neededNumber}}</p>-->
-        <div class="fight-widget flex j-center a-center f-wrap g-8">
-            <div
-                class="fight-item flex j-center a-center"
-                v-for="i in pool"
-                @click="choseNumber(i)"
-            >
-                <template v-if="i === 69">
-                    <img
-                        alt=""
-                        src="/qr_code.png"
-                        style="width: 32px; height: 32px"
-                    />
-                </template>
-                <template v-else-if="i > 1 && i < 5">😎</template>
-                <template v-else-if="i > 10 && i < 15">🥺</template>
-                <template v-else-if="i > 22 && i < 28">$</template>
-                <template v-else>
-                    {{ i }}
-                </template>
+        <div class="d-column g-20">
+            <div class="fight-widget flex j-center a-center f-wrap g-8">
+                <div
+                    class="fight-item flex j-center a-center"
+                    v-for="i in pool"
+                    @click="choseNumber(i)"
+                >
+                    <template v-if="i === 69">
+                        <img
+                            alt=""
+                            src="/qr_code.png"
+                            style="width: 32px; height: 32px"
+                        />
+                    </template>
+                    <template v-else-if="i > 1 && i < 5">😎</template>
+                    <template v-else-if="i > 10 && i < 15">🥺</template>
+                    <template v-else-if="i > 22 && i < 28">$</template>
+                    <template v-else>
+                        {{ i }}
+                    </template>
+                </div>
             </div>
             <div class="flex a-center w-100 s-between">
                 <p>{{ sum }}</p>
                 <div class="d-column g-8">
-                    <span
-                        class="set-money"
-                        @click="setSum('plus')"
-                        >+</span
-                    >
-                    <span
-                        class="set-money"
-                        @click="setSum('minus')"
-                        >-</span
-                    >
+                    <span class="set-money" @click="setSum('plus')">+</span>
+                    <span class="set-money" @click="setSum('minus')">-</span>
                 </div>
             </div>
         </div>
