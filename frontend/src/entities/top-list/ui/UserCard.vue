@@ -1,7 +1,7 @@
 <template>
     <div class="user-card">
         <p>{{ first_name }}</p>
-        <p>{{ coins }}</p>
+        <p>{{ coins.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') }}</p>
     </div>
 </template>
 
