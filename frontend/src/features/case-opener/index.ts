@@ -1,1 +1,1 @@
-export {default as CaseOpener} from './ui/CaseOpener.vue'
+export { default as CaseOpener } from './ui/CaseOpener.vue'

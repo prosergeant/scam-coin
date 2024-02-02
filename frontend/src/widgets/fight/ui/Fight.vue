@@ -9,7 +9,7 @@
             >
                 <template v-if="i === 69">
                     <img
-						alt=''
+                        alt=""
                         src="/qr_code.png"
                         style="width: 32px; height: 32px"
                     />
@@ -33,7 +33,7 @@
 
                     <div class="flex j-center a-center w-100 h-100">
                         <img
-							alt=''
+                            alt=""
                             @load="setImageIsLoad(i)"
                             class="chest-anim"
                             :class="{ active: j === currFrame }"
@@ -65,14 +65,13 @@ const { user } = storeToRefs(useUser())
 const { setEnemyDefault } = useFight()
 const { enemy } = storeToRefs(useFight())
 
-
 onMounted(async () => {
     if (!enemy.value.id) router.push('/')
     createPool()
     for (const i of chestAnimUrls) setImageForLoad(i)
-	preloadImages.value = true
-	await delay(0)
-	preloadImages.value = false
+    preloadImages.value = true
+    await delay(0)
+    preloadImages.value = false
 })
 
 const preloadImages = ref(false)

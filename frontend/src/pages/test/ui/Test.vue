@@ -1,9 +1,15 @@
-<template><div><CaseOpener></CaseOpener></div></template>
+<template>
+    <div class="test">
+        <CaseOpener />
+    </div>
+</template>
 
-<script setup lang='ts'>
-import { CaseOpener } from '@/features';
+<script setup lang="ts">
+import { CaseOpener } from '@/features'
 </script>
 
-<style scoped lang='scss'>
-
+<style scoped lang="scss">
+.test {
+    padding: 20px 12px 0 12px;
+}
 </style>
