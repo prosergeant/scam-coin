@@ -12,7 +12,7 @@ const parseJson = (string) => {
 
 const httpsGetData = (url, params) => {
     const options = {
-        host: 'bronkz.app',
+        host: 'scam-coin.lol',
         port: 443,
         path: `/api-ws${url}`,
         method: 'GET',
@@ -46,7 +46,7 @@ const httpsGetData = (url, params) => {
 const httpsPostData = (url, body) => {
     // const postData = JSON.stringify(body)
     // const options = {
-    //     hostname: 'bronkz.app',
+    //     hostname: 'scam-coin.lol',
     //     port: 443,
     //     path: `/api-ws${url}`,
     //     method: 'POST',
@@ -72,7 +72,7 @@ const httpsPostData = (url, body) => {
     const postData = JSON.stringify(body);
 
     const options = {
-        hostname: 'bronkz.app',
+        hostname: 'scam-coin.lol',
         port: 443,
         path: `/api-ws${url}`,
         method: 'POST',
