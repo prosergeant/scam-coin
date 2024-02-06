@@ -22,4 +22,9 @@ export const updateOrCreateUser = async (tg_userData: Ref<ITGUser>) => {
     store.user.crit_chance = curr_user?.crit_chance || 50
     store.user.crit_bonus = curr_user?.crit_bonus || 2
     store.user.damage = curr_user?.damage || 100
+
+    const local_username = localStorage.getItem('username')
+    if (local_username !== tg_userData.value?.username) {
+        localStorage.setItem('local_username', tg_userData.value.username)
+    }
 }

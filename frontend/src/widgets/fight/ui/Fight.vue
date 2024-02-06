@@ -169,7 +169,7 @@ p {
     background: gray;
     border-radius: 6px;
     width: 50px;
-	height: 50px;
+    height: 50px;
     color: white;
     display: flex;
     justify-content: center;

@@ -19,4 +19,5 @@ export const getUsersForFight = async (user_id: number, percentage?: Ref<number>
         })
     ).data
 
-export const grabMoney = async (from: number, to: number, sum: number) => (await http.post('/users/grab-money/', { from, to, sum: Math.abs(sum) })).data
+export const grabMoney = async (from: number, to: number, sum: number) =>
+    (await http.post('/users/grab-money/', { from, to, sum: Math.abs(sum) })).data

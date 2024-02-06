@@ -1,11 +1,13 @@
 <template>
     <div class="test">
-        <CaseOpener />
+        <!--        <CaseOpener />-->
+        <Tower />
     </div>
 </template>
 
 <script setup lang="ts">
 import { CaseOpener } from '@/features'
+import { Tower } from '@/widgets/tower'
 </script>
 
 <style scoped lang="scss">
